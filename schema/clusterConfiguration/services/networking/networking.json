@@ -1,0 +1,14 @@
+{
+    "$id": "https://hpa.hamburg.de/services/networking/networking.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Service Networking Schema",
+    "type": "object",
+    "properties": {
+      "nginx-ingress": {
+        "type": "object",
+        "$ref": "services/networking/nginx-ingress.json",
+        "description": "Nginx Ingress configuration values"
+      }
+    },
+    "required": ["nginx-ingress"]
+  }

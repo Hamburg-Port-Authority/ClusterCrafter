@@ -1,0 +1,25 @@
+{
+    "$id": "https://hpa.hamburg.de/services/coreServices.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Cluster Services Schema",
+    "type": "object",
+    "properties": {
+      "dns": {
+        "type": "object",
+        "$ref": "services/dns/dns.json"
+      },
+      "networking": {
+        "type": "object",
+        "$ref": "services/networking/networking.json"
+      },
+      "security": {
+        "type": "object",
+        "$ref": "services/security/security.json"
+      },
+      "system": {
+        "type": "object",
+        "$ref": "services/system/system.json"
+      }
+    },
+    "required": ["dns", "networking", "security", "system"]
+  }

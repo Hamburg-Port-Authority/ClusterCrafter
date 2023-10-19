@@ -1,0 +1,16 @@
+{
+  "$id": "https://hpa.hamburg.de/schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Cluster Schema",
+  "type": "object",
+  "properties": {
+    "infrastructure": {
+      "type": "object",
+      "$ref": "clusterConfiguration/infrastructure/infrastructure.json"
+    },
+    "services":{
+      "type": "object",
+      "$ref": "clusterConfiguration/services/services.json"
+    }
+  }
+}
