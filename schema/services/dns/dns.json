@@ -6,7 +6,7 @@
     "properties": {
       "externaldns": {
         "type": "object",
-        "$ref": "services/dns/externaldns.json",
+        "$ref": "externaldns.json",
         "description": "ExternalDNS configuration values"
       }
     },

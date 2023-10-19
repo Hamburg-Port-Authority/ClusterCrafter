@@ -6,7 +6,7 @@
     "properties": {
       "nginx-ingress": {
         "type": "object",
-        "$ref": "services/networking/nginx-ingress.json",
+        "$ref": "nginx-ingress.json",
         "description": "Nginx Ingress configuration values"
       }
     },

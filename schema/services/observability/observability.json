@@ -6,7 +6,7 @@
     "properties": {
       "prometheus-node-exporter": {
         "type": "object",
-        "$ref": "services/observability/prometheus-node-exporter.json",
+        "$ref": "prometheus-node-exporter.json",
         "description": "Prometheus Node Exporter configuration values"
       }
     },

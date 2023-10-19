@@ -6,19 +6,19 @@
     "properties": {
       "dns": {
         "type": "object",
-        "$ref": "services/dns/dns.json"
+        "$ref": "dns/dns.json"
       },
       "networking": {
         "type": "object",
-        "$ref": "services/networking/networking.json"
+        "$ref": "networking/networking.json"
       },
       "security": {
         "type": "object",
-        "$ref": "services/security/security.json"
+        "$ref": "security/security.json"
       },
       "system": {
         "type": "object",
-        "$ref": "services/system/system.json"
+        "$ref": "system/system.json"
       }
     },
     "required": ["dns", "networking", "security", "system"]

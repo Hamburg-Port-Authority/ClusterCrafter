@@ -6,11 +6,11 @@
   "properties": {
     "infrastructure": {
       "type": "object",
-      "$ref": "clusterConfiguration/infrastructure/infrastructure.json"
+      "$ref": "infrastructure/infrastructure.json"
     },
     "services":{
       "type": "object",
-      "$ref": "clusterConfiguration/services/services.json"
+      "$ref": "services/services.json"
     }
   }
 }

@@ -14,7 +14,7 @@
       },
       "coreServices": {
         "type": "object",
-        "$ref": "services/coreServices.json"
+        "$ref": "coreServices.json"
       }
     },
     "required": ["defaultStorageClass", "defaultServiceUri", "coreServices"]

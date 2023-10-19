@@ -1,0 +1,10 @@
+{
+    "$id": "https://hpa.hamburg.de/services/security/security.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Service Security Schema",
+    "type": "object",
+    "properties": {
+      
+    },
+    "required": []
+  }
