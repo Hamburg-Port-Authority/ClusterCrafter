@@ -17,7 +17,7 @@ if ! [ -x "$(command -v java)" ]; then
   exit 1
 fi
 # defaults
-REGISTRY="ghcr.io/Hamburg-Port-Authority"
+REGISTRY="ghcr.io/hamburg-port-authority"
 # get current tag information
 IS_DEV_BUILD=$(git tag -l --contains HEAD)
 GIT_TAG=$(git describe --abbrev=0 --tags HEAD)
