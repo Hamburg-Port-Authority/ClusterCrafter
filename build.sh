@@ -29,4 +29,4 @@ then
 else
     TAG=$GIT_TAG
 fi
-docker build ./ -f Dockerfile -t $(echo "$REGISTRY/cluster-templater:$TAG")
+docker build ./ -f Dockerfile -t $(echo "$REGISTRY/cluster-crafter:$TAG")
