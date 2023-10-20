@@ -1,4 +1,4 @@
 ClusterCrafter
 ====
 
-![Cluster Crafter Logo](logo.png)
+![Cluster Crafter Logo](misc/logo.png)
