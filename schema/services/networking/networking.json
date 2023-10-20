@@ -4,11 +4,11 @@
     "title": "Service Networking Schema",
     "type": "object",
     "properties": {
-      "nginx-ingress": {
+      "nginxIngress": {
         "type": "object",
         "$ref": "nginx-ingress.json",
         "description": "Nginx Ingress configuration values"
       }
     },
-    "required": ["nginx-ingress"]
+    "required": ["nginxIngress"]
   }

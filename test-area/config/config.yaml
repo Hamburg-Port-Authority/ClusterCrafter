@@ -14,9 +14,9 @@ services:
         imageRegistry: "hub.docker.com"
         corporateCertificateConfigmapName: "corp-ca"
     networking:
-      nginx-ingress:
-        controller-image-repository: "registry.k8s.io/ingress-nginx/controller"
-        admissionWebhooks-image-repository: "registry.k8s.io/ingress-nginx/kube-webhook-certgen"
-        defaultBackend-image-repository: "registry.k8s.io/defaultbackend-amd64"
+      nginxIngress:
+        controllerImageRepository: "registry.k8s.io/ingress-nginx/controller"
+        admissionWebhooksImageRepository: "registry.k8s.io/ingress-nginx/kube-webhook-certgen"
+        defaultBackendImageRepository: "registry.k8s.io/defaultbackend-amd64"
     security: {}
     system: {}

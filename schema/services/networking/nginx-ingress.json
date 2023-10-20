@@ -4,21 +4,21 @@
   "title": "Service Nginx Ingress Schema",
   "type": "object",
   "properties": {
-    "controller-image-repository": {
+    "controllerImageRepository": {
       "type": "string",
       "description": "Repository for the controller image. For example: registry.k8s.io/ingress-nginx/controller",
       "default": "registry.k8s.io/ingress-nginx/controller"
     },
-    "admissionWebhooks-image-repository": {
+    "admissionWebhooksImageRepository": {
       "type":"string",
       "description": "Repository for the admissionWebhook image. For example: registry.k8s.io/ingress-nginx/kube-webhook-certgen",
       "default": "registry.k8s.io/ingress-nginx/kube-webhook-certgen"
     },
-    "defaultBackend-image-repository": {
+    "defaultBackendImageRepository": {
       "type": "string",
       "description": "Repository for the default backend image. For example: registry.k8s.io/defaultbackend-amd64",
       "default": "registry.k8s.io/defaultbackend-amd64"
     }
   },
-  "required": ["controller-image-repository", "admissionWebhooks-image-repository", "defaultBackend-image-repository"]
+  "required": ["controllerImageRepository", "admissionWebhooksImageRepository", "defaultBackendImageRepository"]
 }
