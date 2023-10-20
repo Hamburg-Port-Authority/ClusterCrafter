@@ -4,18 +4,14 @@
     "title": "Cluster Services Schema",
     "type": "object",
     "properties": {
-      "defaultStorageClass": {
-        "type": "string",
-        "description": "The default storage class to use with every deployment."
-      },
-      "defaultServiceUri": {
-        "type": "string",
-        "description": "Service URI under which every base-service should be made available. For example: devops..de"
+      "defaults": {
+        "type": "object",
+        "$ref": "defaults.json"
       },
       "coreServices": {
         "type": "object",
         "$ref": "coreServices.json"
       }
     },
-    "required": ["defaultStorageClass", "defaultServiceUri", "coreServices"]
+    "required": ["defaults", "coreServices"]
   }

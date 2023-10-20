@@ -4,7 +4,14 @@
     "title": "Service Security Schema",
     "type": "object",
     "properties": {
-      
+      "certManager.": {
+        "type": "object",
+        "$ref": "cert-manager.json"
+      },
+      "falco": {
+        "type": "object",
+        "$ref": "falco.json"
+      }
     },
-    "required": []
+    "required": ["certManager", "falco"]
   }

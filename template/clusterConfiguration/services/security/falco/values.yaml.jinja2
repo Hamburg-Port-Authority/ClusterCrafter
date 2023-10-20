@@ -1,0 +1,49 @@
+psp:
+  enabled: "true"
+  privileged: {{ services.coreServices.security.falco.privilegedPspName }}
+
+falco:
+  image:
+    registry: {{ services.coreServices.security.falco.imageRegistry }}
+  driver:
+    loader:
+      enabled: {{ services.coreServices.security.falco.enableDriverLoader }}
+      initContainer:
+        image:
+          registry: {{ services.coreServices.security.falco.imageRegistry }}
+  falcoctl:
+    image:
+      registry: {{ services.coreServices.security.falco.imageRegistry }}
+    artifact:
+      install:
+        env: 
+          - name: HTTP_PROXY
+            value: '{{ services.defaults.defaultHttpProxy }}'
+          - name: HTTPS_PROXY
+            value: '{{ services.defaults.defaultHttpProxy }}'
+          - name: http_proxy
+            value: '{{ services.defaults.defaultHttpProxy }}'
+          - name: https_proxy
+            value: '{{ services.defaults.defaultHttpProxy }}'
+          - name: no_proxy
+            value: "{{ services.defaults.defaultNoProxy }}"
+          - name: NO_PROXY
+            value: "{{ services.defaults.defaultNoProxy }}"
+      follow:
+        env: 
+          - name: HTTP_PROXY
+            value: '{{ services.defaults.defaultHttpProxy }}'
+          - name: HTTPS_PROXY
+            value: '{{ services.defaults.defaultHttpProxy }}'
+          - name: http_proxy
+            value: '{{ services.defaults.defaultHttpProxy }}'
+          - name: https_proxy
+            value: '{{ services.defaults.defaultHttpProxy }}'
+          - name: no_proxy
+            value: "{{ services.defaults.defaultNoProxy }}"
+          - name: NO_PROXY
+            value: "{{ services.defaults.defaultNoProxy }}"
+
+falco-exporter:
+  image:
+    registry: {{ services.coreServices.security.falco.imageRegistry }}

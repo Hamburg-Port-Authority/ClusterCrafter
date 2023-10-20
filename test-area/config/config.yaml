@@ -1,6 +1,10 @@
 services:
-  defaultStorageClass: "kubernetes-storage-policy"
-  defaultServiceUri: "my.kubernetes.cluster.net"
+  defaults:
+    defaultStorageClass: "kubernetes-storage-policy"
+    defaultServiceUri: "my.kubernetes.cluster.net"
+    defaultHttpProxy: "localhost:3128"
+    defaultHttpsProxy: "localhost:3128"
+    defaultNoProxy: "127.0.0.1,localhost,.local,.svc"
   coreServices:
     dns:
       externaldns:
@@ -31,4 +35,8 @@ services:
         webhookImageRepository: "quay.io/jetstack/cert-manager-webhook"
         cainjectImageRepository: "quay.io/jetstack/cert-manager-cainjector"
         startupipcheckImageRepository: "quay.io/jetstack/cert-manager-ctl"
+      falco:
+        privilegedPspName: "psp:system-privileged"
+        imageRegistry: "hub.docker.com"
+        enableDriverLoader: "true"
     system: {}
