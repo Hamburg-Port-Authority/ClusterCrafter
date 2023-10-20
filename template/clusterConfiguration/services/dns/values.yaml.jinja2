@@ -3,12 +3,12 @@ pdns_api_key: {{ services.coreServices.dns.externaldns.powerdnsApiKey | b64encod
 
 external-dns:
   pdns:
-    apiUrl: "https://powerdns.corp.local"
-    apiPort: "443"
+    apiUrl: "{{ services.coreServices.dns.externaldns.apiUrl}}"
+    apiPort: "{{ services.coreServices.dns.externaldns.apiPort }}"
     secretName: "external-dns"
 
   image:
-    registry: pullproxy.corp.lan/hub.docker.com
+    registry: {{ services.coreServices.dns.externaldns.imageRegistry }}
 
   provider: pdns
 
@@ -20,7 +20,7 @@ external-dns:
   extraVolumes:
     - name: certs
       configMap:
-        name: corp-ca
+        name: {{ services.coreServices.dns.externaldns.corporateCertificateConfigmapName }}
 
   extraArgs:
     pdns-tls-enabled: false
@@ -30,4 +30,4 @@ external-dns:
     {%- for filter in services.coreServices.dns.externaldns.domainFilter %}
     - {{ filter.uri }}
     {%- endfor %}
-  txtOwnerId: "{{ services.coreServices.dns.externaldns.txtOwnerID|default(name,true) }}"
+  txtOwnerId: "{{ services.coreServices.dns.externaldns.txtOwnerID }}"

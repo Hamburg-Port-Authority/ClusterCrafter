@@ -1,0 +1,22 @@
+services:
+  defaultStorageClass: "kubernetes-storage-policy"
+  defaultServiceUri: "my.kubernetes.cluster.net"
+  coreServices:
+    dns:
+      externaldns:
+        powerdnsApiKey: "testing123"
+        domainFilter:
+          - uri: "*.subdomain.corp.local"
+          - uri: "*.sub.corp.local"
+        txtOwnerId: "testTxtOwnerId"
+        apiUrl: "localhost"
+        apiPort: "1234"
+        imageRegistry: "hub.docker.com"
+        corporateCertificateConfigmapName: "corp-ca"
+    networking:
+      nginx-ingress:
+        controller-image-repository: "registry.k8s.io/ingress-nginx/controller"
+        admissionWebhooks-image-repository: "registry.k8s.io/ingress-nginx/kube-webhook-certgen"
+        defaultBackend-image-repository: "registry.k8s.io/defaultbackend-amd64"
+    security: {}
+    system: {}
