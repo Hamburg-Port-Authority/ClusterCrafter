@@ -1,0 +1,44 @@
+{
+  "$id": "https://hpa.hamburg.de/services/security/cert-manager.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Service Cert Manager Schema",
+  "type": "object",
+  "properties": {
+    "priviledgedPspName":  {
+      "type": "string",
+      "description": "Name of the privileged psp within the cluster for cert-manager to work in all namespaces",
+      "default": "psp:system-privileged"
+    },
+    "dnsRecursiveNameserverIp": {
+      "type": "string", 
+      "description": "IP of the nameserver to use for recursive requests. The value should also include the port.",
+      "default": "127.0.0.1:53"
+    },
+    "acmeHttpResolverImage": {
+      "type": "string",
+      "description": "Repository and Image for the acme http resolver to use",
+      "default": "quay.io/jetstack/cert-manager-acmesolver:v1.9.1"
+    },
+    "imageRepository": {
+      "type": "string",
+      "description": "Repository under which the image is available. For example: quay.io/jetstack/cert-manager-controller",
+      "default": "quay.io/jetstack/cert-manager-controller"
+    },
+    "webhookImageRepository": {
+      "type": "string",
+      "description": "",
+      "default": "quay.io/jetstack/cert-manager-webhook"
+    },
+    "cainjectImageRepository": {
+      "type": "string",
+      "description": "",
+      "default": "quay.io/jetstack/cert-manager-cainjector"
+    },
+    "startupipcheckImageRepository": {
+      "type": "string",
+      "description": "",
+      "default": "quay.io/jetstack/cert-manager-ctl"
+    }
+  },
+  "required": ["priviledgedPspName", "dnsRecursiveNameserverIp", "acmeHttpResolverImage", "imageRepository", "webhookImageRepository", "cainjectImageRepository", "startupipcheckImageRepository"]
+}

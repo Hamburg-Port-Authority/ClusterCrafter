@@ -22,5 +22,13 @@ services:
       prometheusNodeExporter:
         imageRegistry: "quay.io"
         imageRepository: "prometheus/node-exporter"
-    security: {}
+    security:
+      certManager:
+        privilegedPspName: "psp:system-privileged"
+        dnsRecursiveNameserverIp: "127.0.0.1:53"
+        acmeHttpResolverImage: "quay.io/jetstack/cert-manager-acmesolver:v1.9.1"
+        imageRepository: "quay.io/jetstack/cert-manager-controller"
+        webhookImageRepository: "quay.io/jetstack/cert-manager-webhook"
+        cainjectImageRepository: "quay.io/jetstack/cert-manager-cainjector"
+        startupipcheckImageRepository: "quay.io/jetstack/cert-manager-ctl"
     system: {}
