@@ -18,5 +18,9 @@ services:
         controllerImageRepository: "registry.k8s.io/ingress-nginx/controller"
         admissionWebhooksImageRepository: "registry.k8s.io/ingress-nginx/kube-webhook-certgen"
         defaultBackendImageRepository: "registry.k8s.io/defaultbackend-amd64"
+    observability:
+      prometheusNodeExporter:
+        imageRegistry: "quay.io"
+        imageRepository: "prometheus/node-exporter"
     security: {}
     system: {}
