@@ -4,11 +4,11 @@
     "title": "Service Observability Schema",
     "type": "object",
     "properties": {
-      "prometheus-node-exporter": {
+      "prometheusNodeExporter": {
         "type": "object",
         "$ref": "prometheus-node-exporter.json",
         "description": "Prometheus Node Exporter configuration values"
       }
     },
-    "required": ["prometheus-node-exporter"]
+    "required": ["prometheusNodeExporter"]
   }

@@ -4,13 +4,15 @@
   "title": "Service Prometheus Node Exporter Schema",
   "type": "object",
   "properties": {
-    "image-registry":  {
+    "imageRegistry":  {
       "type": "string",
-      "description": "Image registry to use. For example: quay.io"
+      "description": "Image registry to use. For example: quay.io",
+      "default": "quay.io"
     },
-    "image-repository": {
+    "imageRepository": {
       "type": "string",
-      "description": "Repository under which the image is available. For example: prometheus/node-exporter"
+      "description": "Repository under which the image is available. For example: prometheus/node-exporter",
+      "default": "prometheus/node-exporter"
     }
   },
   "required": ["image-registry", "image-repository"]
