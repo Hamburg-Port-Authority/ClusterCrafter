@@ -1,0 +1,60 @@
+{
+  "$id": "https://hpa.hamburg.de/services/system/argocd.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Service ArgoCD Schema",
+  "type": "object",
+  "properties": {
+    "privilegedPspName":  {
+      "type": "string",
+      "description": "Name of the privileged psp within the cluster for cert-manager to work in all namespaces",
+      "default": "psp:system-privileged"
+    },
+    "additionalNoProxy":  {
+      "type": "string",
+      "description": "Additional no proxy configuration for argocd",
+      "default": "argocd-core-repo-server,argocd-core-server,argocd-core-applicationset-controller,argocd-core-dex-server"
+    },
+    "init":{    
+      "type": "array",
+      "$ref": "argocd/argocd-repo-init.json"
+    },
+    "ingress":{
+      "type": "object",
+      "$ref": "argocd/argocd-ingress.json"
+    },
+    "revisionHistory": {
+      "type": "string",
+      "description": "Amount of revisions to store within kubernetes",
+      "default": "2"
+    },
+    "globalImageRepository": {
+      "type": "string",
+      "default": "quay.io/argoproj/argocd"
+    },
+    "dex": {
+      "type": "object",
+      "$ref": "argocd/argocd-dex.json"
+    },
+    "server": {
+      "type": "object",
+      "$ref": "argocd/argocd-server.json"
+    },
+    "repoServer": {
+      "type": "object",
+      "$ref": "argocd/argocd-repo-server.json"
+    },
+    "controller": {
+      "type": "object",
+      "$ref": "argocd/argocd-controller.json"
+    },
+    "applicationSetController": {
+      "type": "object",
+      "$ref": "argocd/argocd-applicationset-controller.json"
+    },
+    "redisImageRegistry": {
+      "type": "string",
+      "default": "hub.docker.com/library/redis"
+    }
+  },
+  "required": []
+}
