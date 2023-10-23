@@ -39,4 +39,58 @@ services:
         privilegedPspName: "psp:system-privileged"
         imageRegistry: "hub.docker.com"
         enableDriverLoader: "true"
-    system: {}
+    system:
+      argocd:
+        privilegedPspName: "psp:system-privileged"
+        additionalNoProxy: "argocd-core-repo-server,argocd-core-server,argocd-core-applicationset-controller,argocd-core-dex-server"
+        init:
+          - applicationEnabled: "true"
+            repositoryEnabled: "true"
+            manifestId: "testone"
+            gitRepositoryURL: "https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog.git"
+            gitRepositoryPath: "./"
+            gitRepositoryPAT: "my_awesome_pat"
+            gitRepositoryUser: "my_awesome_user"
+            targetRevision: "main"
+          - applicationEnabled: "true"
+            repositoryEnabled: "false"
+            manifestId: "testtwo"
+            gitRepositoryURL: "https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog2.git"
+            gitRepositoryPath: "./"
+            gitRepositoryPAT: "my_awesome_pattwo"
+            gitRepositoryUser: "my_awesome_usertwo"
+            targetRevision: "main"
+          - applicationEnabled: "false"
+            repositoryEnabled: "true"
+            manifestId: "testtwo"
+            gitRepositoryURL: "https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog3.git"
+            gitRepositoryPath: "./"
+            gitRepositoryPAT: "my_awesome_patthree"
+            gitRepositoryUser: "my_awesome_userthree"
+            targetRevision: "main"
+        ingress:
+          enabled: "true"
+          hostname: "argocd"
+          className: "nginx"
+          issuer: "http"
+        revisionHistory: "2"
+        globalImageRepository: "quay.io/argoproj/argocd"
+        dex:
+          enabled: "true"
+        server:
+          replicas: "3"
+          autoscalingEnabled: "true"
+          autoscalingMinReplica: "3"
+          autoscalingMaxReplica: "5"
+        repoServer:
+          replicas: "3"
+          autoscalingEnabled: "true"
+          autoscalingMinReplica: "3"
+          autoscalingMaxReplica: "5"
+        controller:
+          replicas: "3"
+        applicationSetController:
+          replicas: "3"
+        redisImageRegistry: "hub.docker.com/library/redis"
+
+

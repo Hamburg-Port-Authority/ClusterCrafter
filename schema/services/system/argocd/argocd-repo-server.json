@@ -25,5 +25,5 @@
       "default": "5"
     }
   },
-  "required": ["enabled"]
+  "required": ["enabled", "autoscalingEnabled", "autoscalingMinReplica", "autoscalingMaxReplica"]
 }

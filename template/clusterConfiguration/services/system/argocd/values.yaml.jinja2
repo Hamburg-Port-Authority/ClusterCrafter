@@ -57,7 +57,7 @@ argo-cd:
       # -- Maximum number of replicas for the Argo CD server [HPA]
       maxReplicas: {{ services.coreServices.system.argocd.server.autoscalingMaxReplica }}
     env:
-    - name: HTTP_PROXY
+      - name: HTTP_PROXY
         value: '{{ services.defaults.defaultHttpProxy }}'
       - name: HTTPS_PROXY
         value: '{{ services.defaults.defaultHttpProxy }}'
