@@ -10,7 +10,7 @@
     },
     "services":{
       "type": "object",
-      "$ref": "services/services.json"
+      "$ref": "coreService/services.json"
     }
   }
 }
