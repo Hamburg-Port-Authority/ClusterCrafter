@@ -37,6 +37,10 @@ services:
         startupipcheckImageRepository: "quay.io/jetstack/cert-manager-ctl"
       externalSecrets:
         imageRepository: "ghcr.io/external-secrets/external-secrets"
+        clusterSecretStore:
+          enabled: "true"
+          tenantId: "123123"
+          vaultUrl: "https://azure.awesome.id.microsoft.com/blabla"
       falco:
         privilegedPspName: "psp:system-privileged"
         imageRegistry: "hub.docker.com"
