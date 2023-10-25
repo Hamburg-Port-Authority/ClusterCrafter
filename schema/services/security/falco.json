@@ -4,7 +4,7 @@
   "title": "Service Falco Schema",
   "type": "object",
   "properties": {
-    "privilegedPspName":  {
+    "privilegedPspName": {
       "type": "string",
       "description": "Name of the privileged psp within the cluster for cert-manager to work in all namespaces",
       "default": "psp:system-privileged"
@@ -20,5 +20,9 @@
       "default": "true"
     }
   },
-  "required": ["privilegedPspName", "imageRegistry", "enableDriverLoader"]
+  "required": [
+    "privilegedPspName",
+    "imageRegistry",
+    "enableDriverLoader"
+  ]
 }
