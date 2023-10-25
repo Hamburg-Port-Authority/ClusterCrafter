@@ -4,21 +4,21 @@
   "title": "Service ArgoCD Schema",
   "type": "object",
   "properties": {
-    "privilegedPspName":  {
+    "privilegedPspName": {
       "type": "string",
       "description": "Name of the privileged psp within the cluster for cert-manager to work in all namespaces",
       "default": "psp:system-privileged"
     },
-    "additionalNoProxy":  {
+    "additionalNoProxy": {
       "type": "string",
       "description": "Additional no proxy configuration for argocd",
       "default": "argocd-core-repo-server,argocd-core-server,argocd-core-applicationset-controller,argocd-core-dex-server"
     },
-    "init":{    
+    "init": {
       "type": "array",
       "$ref": "argocd/argocd-repo-init.json"
     },
-    "ingress":{
+    "ingress": {
       "type": "object",
       "$ref": "argocd/argocd-ingress.json"
     },
