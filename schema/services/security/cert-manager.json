@@ -4,13 +4,13 @@
   "title": "Service Cert Manager Schema",
   "type": "object",
   "properties": {
-    "priviledgedPspName":  {
+    "priviledgedPspName": {
       "type": "string",
       "description": "Name of the privileged psp within the cluster for cert-manager to work in all namespaces",
       "default": "psp:system-privileged"
     },
     "dnsRecursiveNameserverIp": {
-      "type": "string", 
+      "type": "string",
       "description": "IP of the nameserver to use for recursive requests. The value should also include the port.",
       "default": "127.0.0.1:53"
     },
@@ -40,5 +40,13 @@
       "default": "quay.io/jetstack/cert-manager-ctl"
     }
   },
-  "required": ["priviledgedPspName", "dnsRecursiveNameserverIp", "acmeHttpResolverImage", "imageRepository", "webhookImageRepository", "cainjectImageRepository", "startupipcheckImageRepository"]
+  "required": [
+    "priviledgedPspName",
+    "dnsRecursiveNameserverIp",
+    "acmeHttpResolverImage",
+    "imageRepository",
+    "webhookImageRepository",
+    "cainjectImageRepository",
+    "startupipcheckImageRepository"
+  ]
 }
