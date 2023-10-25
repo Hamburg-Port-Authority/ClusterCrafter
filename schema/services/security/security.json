@@ -8,10 +8,14 @@
         "type": "object",
         "$ref": "cert-manager.json"
       },
+      "externalSecrets":{
+        "type": "object",
+        "$ref": "external-secrets.json"
+      },
       "falco": {
         "type": "object",
         "$ref": "falco.json"
       }
     },
-    "required": ["certManager", "falco"]
+    "required": ["certManager", "externalSecrets", "falco"]
   }

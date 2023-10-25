@@ -1,0 +1,25 @@
+external-secrets:
+  image:
+    repository: {{ services.coreServices.security.externalSecrets.imageRepository }}
+
+  webhook:
+    image:
+      repository: {{ services.coreServices.security.externalSecrets.imageRepository }}
+
+  certController:
+    image:
+      repository: {{ services.coreServices.security.externalSecrets.imageRepository }}
+
+  extraEnv:
+    - name: HTTP_PROXY
+      value: '{{ services.defaults.defaultHttpProxy }}'
+    - name: HTTPS_PROXY
+      value: '{{ services.defaults.defaultHttpProxy }}'
+    - name: http_proxy
+      value: '{{ services.defaults.defaultHttpProxy }}'
+    - name: https_proxy
+      value: '{{ services.defaults.defaultHttpProxy }}'
+    - name: no_proxy
+      value: "{{ services.defaults.defaultNoProxy }}"
+    - name: NO_PROXY
+      value: "{{ services.defaults.defaultNoProxy }}"

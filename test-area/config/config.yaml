@@ -35,6 +35,8 @@ services:
         webhookImageRepository: "quay.io/jetstack/cert-manager-webhook"
         cainjectImageRepository: "quay.io/jetstack/cert-manager-cainjector"
         startupipcheckImageRepository: "quay.io/jetstack/cert-manager-ctl"
+      externalSecrets:
+        imageRepository: "ghcr.io/external-secrets/external-secrets"
       falco:
         privilegedPspName: "psp:system-privileged"
         imageRegistry: "hub.docker.com"
