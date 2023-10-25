@@ -1,21 +1,25 @@
 {
-    "$id": "https://hpa.hamburg.de/services/security/security.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Service Security Schema",
-    "type": "object",
-    "properties": {
-      "certManager.": {
-        "type": "object",
-        "$ref": "cert-manager.json"
-      },
-      "externalSecrets":{
-        "type": "object",
-        "$ref": "external-secrets.json"
-      },
-      "falco": {
-        "type": "object",
-        "$ref": "falco.json"
-      }
+  "$id": "https://hpa.hamburg.de/services/security/security.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Service Security Schema",
+  "type": "object",
+  "properties": {
+    "certManager.": {
+      "type": "object",
+      "$ref": "cert-manager.json"
     },
-    "required": ["certManager", "externalSecrets", "falco"]
-  }
+    "externalSecrets": {
+      "type": "object",
+      "$ref": "external-secrets.json"
+    },
+    "falco": {
+      "type": "object",
+      "$ref": "falco.json"
+    }
+  },
+  "required": [
+    "certManager",
+    "externalSecrets",
+    "falco"
+  ]
+}
