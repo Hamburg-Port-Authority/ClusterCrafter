@@ -1,0 +1,43 @@
+kyverno:
+  test:
+    image:
+      registry: {{ coreServices.security.kyverno.testImage.imageRegistry }}
+      repository: {{ coreServices.security.kyverno.testImage.imageRepository }}
+  webhooksCleanup:
+    image: {{ coreServices.security.kyverno.webhookCleanupImage }}
+  # Cleanup cronjobs to prevent internal resources from stacking up in the cluster
+  cleanupJobs:
+    admissionReports:
+      image:
+        registry: {{ coreServices.security.kyverno.cleanupJobsAdmissionReportsImage.imageRegistry }}
+        repository: {{ coreServices.security.kyverno.cleanupJobsAdmissionReportsImage.imageRepository }}
+    clusterAdmissionReports:
+      image:
+        registry: {{ coreServices.security.kyverno.cleanupJobsClusterAdmissionReportsImage.imageRegistry }}
+        repository: {{ coreServices.security.kyverno.cleanupJobsClusterAdmissionReportsImage.imageRepository }}
+
+  # Admission controller configuration
+  admissionController:
+    container:
+      image:
+        registry: {{ coreServices.security.kyverno.admissionControllerContainerImage.imageRegistry }}
+        repository: {{ coreServices.security.kyverno.admissionControllerContainerImage.imageRepository }}
+    initContainer:
+      image:
+        registry: {{ coreServices.security.kyverno.admissionControllerInitContainerImage.imageRegistry }}
+        repository: {{ coreServices.security.kyverno.admissionControllerInitContainerImage.imageRepository }}
+  # Background controller configuration
+  backgroundController:
+    image:
+      registry: {{ coreServices.security.kyverno.backgroundControllerImage.imageRegistry }}
+      repository: {{ coreServices.security.kyverno.backgroundControllerImage.imageRepository }}
+  # Cleanup controller configuration
+  cleanupController:
+    image:
+      registry: {{ coreServices.security.kyverno.cleanupControllerImage.imageRegistry }}
+      repository: {{ coreServices.security.kyverno.cleanupControllerImage.imageRepository }}
+  # Reports controller configuration
+  reportsController:
+    image:
+      registry: {{ coreServices.security.kyverno.reportsControllerImage.imageRegistry }}
+      repository: {{ coreServices.security.kyverno.reportsControllerImage.imageRepository }}

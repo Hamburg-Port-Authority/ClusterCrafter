@@ -46,6 +46,32 @@ clusters:
           privilegedPspName: "psp:system-privileged"
           imageRegistry: "hub.docker.com"
           enableDriverLoader: "true"
+        kyverno:
+          testImage:
+            imageRegistry: "hub.docker.com"
+            imageRepository: "busybox"
+          cleanupJobsAdmissionReportsImage:
+            imageRegistry: "hub.docker.com"
+            imageRepository: "bitnami/kubectl"
+          cleanupJobsClusterAdmissionReportsImage:
+            imageRegistry: "hub.docker.com"
+            imageRepository: "bitnami/kubectl"
+          admissionControllerContainerImage:
+            imageRegistry: "ghcr.io"
+            imageRepository: "kyverno/kyverno"
+          admissionControllerInitContainerImage:
+            imageRegistry: "ghcr.io"
+            imageRepository: "kyverno/kyvernopre"
+          backgroundControllerImage:
+            imageRegistry: "ghcr.io"
+            imageRepository: "kyverno/background-controller"
+          cleanupControllerImage:
+            imageRegistry: "ghcr.io"
+            imageRepository: "kyverno/cleanup-controller"
+          reportsControllerImage:
+            imageRegistry: "ghcr.io"
+            imageRepository: "kyverno/reports-controller"
+          webhookCleanupImage: "hub.docker.com/bitnami/kubectl:latest"
       system:
         argocd:
           privilegedPspName: "psp:system-privileged"
