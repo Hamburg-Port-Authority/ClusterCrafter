@@ -1,0 +1,19 @@
+azuread_user_display_name = "{{ aadUser.name }}"
+azuread_user_name    = "{{ aadUser.displayName }}"
+azuread_user_mail_nickname        = "{{ aadUser.mailNickname }}"
+
+
+azuread_group_display_name = "{{ aadGroup.displayName }}"
+
+
+key_vault_name = "{{ keyVault.name }}"
+
+acr_name = "{{ azureContainerRegistry.name }}"
+
+tags = {
+  Maintainer  = "{{ tags.maintainer }}"
+  Owner       = "{{ tags.owner }}"
+  PoC         = "{{ tags.poc }}"
+  TF-Managed  = "{{ tags.tf-managed }}"
+  Environment = "{{ tags.environment }}"
+}

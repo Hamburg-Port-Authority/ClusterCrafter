@@ -1,0 +1,14 @@
+{
+  "$id": "https://hpa.hamburg.de/infrastructureSchema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Infrastructure Schema",
+  "type": "object",
+  "properties": {
+    "stages": {
+      "type": "array",
+      "items": {
+        "$ref": "infrastructure/infrastructure.json"
+      }
+    }
+  }
+}

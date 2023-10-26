@@ -1,0 +1,22 @@
+{
+    "$id": "https://hpa.hamburg.de/infrastructure/azure/aadUser.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Azure AD User Schema",
+    "type": "object",
+    "properties": {
+
+        "name": {
+            "type": "string",
+            "description": "The name of the user"
+        },
+        "displayName": {
+            "type": "string",
+            "description": "The display name of the user"
+        },
+        "mailNickname": {
+            "type": "string",
+            "description": "The mail nickname of the user"
+        }
+    },
+    "required": ["name", "displayName", "mailNickname"]
+  }

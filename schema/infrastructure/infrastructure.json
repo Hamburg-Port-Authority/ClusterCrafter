@@ -1,10 +1,39 @@
 {
     "$id": "https://hpa.hamburg.de/infrastructure/infrastructure.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Cluster Services Schema",
+    "title": "Infrastructure Schema",
     "type": "object",
     "properties": {
-      
+      "name": {
+        "type": "string"
+      },
+
+      "aadUser": {
+        "type": "object",
+        "$ref" : "azure/aadUser.json"
+      },
+
+      "aadGroup": {
+        "type": "object",
+        "$ref" : "azure/aadGroup.json"
+      },
+
+      "tags" : {
+        "type": "object",
+        "$ref": "azure/tags.json"
+      },
+
+      "keyVaults": {
+        "type": "object",
+        "$ref" : "azure/keyVault.json"
+      },
+
+      "azureContainerRegistry": {
+        "type": "object",
+        "$ref" : "azure/azureContainerRegistry.json"
+      }
+
     },
-    "required": []
+    "required": ["aadUser"]
   }
+

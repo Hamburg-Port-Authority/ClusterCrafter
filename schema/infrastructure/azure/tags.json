@@ -1,0 +1,34 @@
+{
+    "$id": "https://hpa.hamburg.de/infrastructure/azure/tags.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Azure Tags Schema",
+    "type": "object",
+    "properties": {
+
+        "maintainer": {
+            "type": "string",
+            "description": "The maintainer of the project"
+        },
+
+        "owner": {
+            "type": "string",
+            "description": "The owner of the project"
+        },
+
+        "poc" : {
+            "type": "string",
+            "description": "Show if there is a PoC for the project"
+        },
+
+        "tfManaged" : {
+            "type": "string",
+            "description": "Show if the project is managed by terraform"
+        },
+
+        "environment" : {
+            "type": "string",
+            "description": "Show the environment of the project"
+        }
+    },
+    "required": ["maintainer", "owner", "poc", "tfManaged", "environment"]
+  }

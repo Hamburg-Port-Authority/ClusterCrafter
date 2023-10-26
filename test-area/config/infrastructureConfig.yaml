@@ -1,0 +1,18 @@
+stages:
+  - name: development
+    aadUser:
+      name: "svc_portdesk-dummy-dev_devops@hpanet.onmicrosoft.com"
+      displayName: "SVC PortDesk dummy Development (DevOps)"
+      mailNickname: "svc_portdesk-dummy-dev_devops"
+    aadGroup:
+      displayName: "[PORTDESK]_Dummy_Development_Developer"
+    keyVault:
+      name: kv-dummy-dev-713
+    azureContainerRegistry:
+      name: acrdummydev
+    tags:
+      maintainer: "Platform Team"
+      owner: "Mr X"
+      poc: "false"
+      tfManaged: "true"
+      environment: "development"
