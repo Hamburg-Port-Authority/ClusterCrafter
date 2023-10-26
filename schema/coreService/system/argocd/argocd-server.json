@@ -1,5 +1,5 @@
 {
-  "$id": "https://hpa.hamburg.de/services/system/argocd/argocd-server.json",
+  "$id": "https://hpa.hamburg.de/coreService/system/argocd/argocd-server.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Service ArgoCD Server Schema",
   "type": "object",

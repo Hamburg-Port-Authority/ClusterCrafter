@@ -1,0 +1,11 @@
+ingress-nginx:
+  controller:
+    image:
+      repository: {{ coreServices.networking.nginxIngress.controllerImageRepository }}
+    admissionWebhooks:
+      patch:
+        image:
+          repository: {{ coreServices.networking.nginxIngress.admissionWebhooksImageRepository }}
+  defaultBackend:
+    image:
+      repository: {{ coreServices.networking.nginxIngress.defaultBackendImageRepository }}

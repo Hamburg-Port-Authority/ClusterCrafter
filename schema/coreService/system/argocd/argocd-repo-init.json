@@ -1,5 +1,5 @@
 {
-  "$id": "https://hpa.hamburg.de/services/system/argocd/argocd-repo-init.json",
+  "$id": "https://hpa.hamburg.de/coreService/system/argocd/argocd-repo-init.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Service ArgoCD Repository Init Schema",
   "type": "object",

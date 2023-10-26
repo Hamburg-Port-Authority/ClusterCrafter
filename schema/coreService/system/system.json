@@ -1,5 +1,5 @@
 {
-    "$id": "https://hpa.hamburg.de/services/system/system.json",
+    "$id": "https://hpa.hamburg.de/coreService/system/system.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Service System Schema",
     "type": "object",

@@ -1,0 +1,14 @@
+{
+  "$id": "https://hpa.hamburg.de/coreServiceSchema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Cluster Schema",
+  "type": "object",
+  "properties": {
+    "clusters": {
+      "type": "array",
+      "items": {
+        "$ref": "coreService/services.json"
+      }
+    }
+  }
+}

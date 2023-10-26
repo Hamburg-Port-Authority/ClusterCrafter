@@ -1,0 +1,19 @@
+psp:
+  privileged: {{ coreServices.security.certManager.privilegedPspName }}
+
+cert-manager:
+  extraArgs:
+    - --dns01-recursive-nameservers={{ coreServices.security.certManager.dnsRecursiveNameserverIp }}
+    - --dns01-recursive-nameservers-only
+    - --acme-http01-solver-image={{ coreServices.security.certManager.acmeHttpResolverImage }}
+  image:
+    repository: {{ coreServices.security.certManager.imageRepository }}
+  webhook:
+    image:
+      repository: {{ coreServices.security.certManager.webhookImageRepository }}
+  cainjector:
+    image:
+      repository: {{ coreServices.security.certManager.cainjectImageRepository }}
+  startupapicheck:
+    image:
+      repository: {{ coreServices.security.certManager.startupipcheckImageRepository }}

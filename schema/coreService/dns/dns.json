@@ -1,5 +1,5 @@
 {
-    "$id": "https://hpa.hamburg.de/services/dns/dns.json",
+    "$id": "https://hpa.hamburg.de/coreService/dns/dns.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Service DNS Schema",
     "type": "object",

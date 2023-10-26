@@ -1,5 +1,5 @@
 {
-    "$id": "https://hpa.hamburg.de/services/coreServices.json",
+    "$id": "https://hpa.hamburg.de/coreService/coreServices.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Cluster Services Schema",
     "type": "object",

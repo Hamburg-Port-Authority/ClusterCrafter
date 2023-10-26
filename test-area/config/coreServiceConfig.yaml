@@ -1,0 +1,103 @@
+clusters:
+  - name: clusterOne
+    defaults:
+      defaultStorageClass: "kubernetes-storage-policy"
+      defaultServiceUri: "my.kubernetes.cluster.net"
+      defaultHttpProxy: "localhost:3128"
+      defaultHttpsProxy: "localhost:3128"
+      defaultNoProxy: "127.0.0.1,localhost,.local,.svc"
+    coreServices:
+      dns:
+        externaldns:
+          powerdnsApiKey: "testing123"
+          domainFilter:
+            - uri: "*.subdomain.corp.local"
+            - uri: "*.sub.corp.local"
+          txtOwnerId: "testTxtOwnerId"
+          apiUrl: "localhost"
+          apiPort: "1234"
+          imageRegistry: "hub.docker.com"
+          corporateCertificateConfigmapName: "corp-ca"
+      networking:
+        nginxIngress:
+          controllerImageRepository: "registry.k8s.io/ingress-nginx/controller"
+          admissionWebhooksImageRepository: "registry.k8s.io/ingress-nginx/kube-webhook-certgen"
+          defaultBackendImageRepository: "registry.k8s.io/defaultbackend-amd64"
+      observability:
+        prometheusNodeExporter:
+          imageRegistry: "quay.io"
+          imageRepository: "prometheus/node-exporter"
+      security:
+        certManager:
+          privilegedPspName: "psp:system-privileged"
+          dnsRecursiveNameserverIp: "127.0.0.1:53"
+          acmeHttpResolverImage: "quay.io/jetstack/cert-manager-acmesolver:v1.9.1"
+          imageRepository: "quay.io/jetstack/cert-manager-controller"
+          webhookImageRepository: "quay.io/jetstack/cert-manager-webhook"
+          cainjectImageRepository: "quay.io/jetstack/cert-manager-cainjector"
+          startupipcheckImageRepository: "quay.io/jetstack/cert-manager-ctl"
+        externalSecrets:
+          imageRepository: "ghcr.io/external-secrets/external-secrets"
+          clusterSecretStore:
+            enabled: "true"
+            tenantId: "123123"
+            vaultUrl: "https://azure.awesome.id.microsoft.com/blabla"
+        falco:
+          privilegedPspName: "psp:system-privileged"
+          imageRegistry: "hub.docker.com"
+          enableDriverLoader: "true"
+      system:
+        argocd:
+          privilegedPspName: "psp:system-privileged"
+          additionalNoProxy: "argocd-core-repo-server,argocd-core-server,argocd-core-applicationset-controller,argocd-core-dex-server"
+          init:
+            - applicationEnabled: "true"
+              repositoryEnabled: "true"
+              manifestId: "testone"
+              gitRepositoryURL: "https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog.git"
+              gitRepositoryPath: "./"
+              gitRepositoryPAT: "my_awesome_pat"
+              gitRepositoryUser: "my_awesome_user"
+              targetRevision: "main"
+            - applicationEnabled: "true"
+              repositoryEnabled: "false"
+              manifestId: "testtwo"
+              gitRepositoryURL: "https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog2.git"
+              gitRepositoryPath: "./"
+              gitRepositoryPAT: "my_awesome_pattwo"
+              gitRepositoryUser: "my_awesome_usertwo"
+              targetRevision: "main"
+            - applicationEnabled: "false"
+              repositoryEnabled: "true"
+              manifestId: "testtwo"
+              gitRepositoryURL: "https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog3.git"
+              gitRepositoryPath: "./"
+              gitRepositoryPAT: "my_awesome_patthree"
+              gitRepositoryUser: "my_awesome_userthree"
+              targetRevision: "main"
+          ingress:
+            enabled: "true"
+            hostname: "argocd"
+            className: "nginx"
+            issuer: "http"
+          revisionHistory: "2"
+          globalImageRepository: "quay.io/argoproj/argocd"
+          dex:
+            enabled: "true"
+          server:
+            replicas: "3"
+            autoscalingEnabled: "true"
+            autoscalingMinReplica: "3"
+            autoscalingMaxReplica: "5"
+          repoServer:
+            replicas: "3"
+            autoscalingEnabled: "true"
+            autoscalingMinReplica: "3"
+            autoscalingMaxReplica: "5"
+          controller:
+            replicas: "3"
+          applicationSetController:
+            replicas: "3"
+          redisImageRegistry: "hub.docker.com/library/redis"
+
+

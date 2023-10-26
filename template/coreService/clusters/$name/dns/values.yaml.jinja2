@@ -1,0 +1,33 @@
+#Must be BASE64 encoded
+pdns_api_key: {{ coreServices.dns.externaldns.powerdnsApiKey | b64encode }}
+
+external-dns:
+  pdns:
+    apiUrl: "{{ coreServices.dns.externaldns.apiUrl}}"
+    apiPort: "{{ coreServices.dns.externaldns.apiPort }}"
+    secretName: "external-dns"
+
+  image:
+    registry: {{ coreServices.dns.externaldns.imageRegistry }}
+
+  provider: pdns
+
+  extraVolumeMounts:
+    - name: certs
+      mountPath: "/etc/ssl/certs/corp-ca.pem"
+      subPath: "corp-ca.pem"
+
+  extraVolumes:
+    - name: certs
+      configMap:
+        name: {{ coreServices.dns.externaldns.corporateCertificateConfigmapName }}
+
+  extraArgs:
+    pdns-tls-enabled: false
+    tls-ca: /etc/ssl/certs/corp-ca.pem
+
+  domainFilters:
+    {%- for filter in coreServices.dns.externaldns.domainFilter %}
+    - {{ filter.uri }}
+    {%- endfor %}
+  txtOwnerId: "{{ coreServices.dns.externaldns.txtOwnerID }}"
