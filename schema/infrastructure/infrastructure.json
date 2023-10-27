@@ -38,12 +38,12 @@
         "$ref" : "azure/aadAppGrafana.json"
       },
 
-      "data": {
+      "azureData": {
         "type": "object",
         "$ref" : "azure/azureData.json"
       },
 
-      "keyVaultSecrets": {
+      "keyVault": {
         "type": "object",
         "$ref" : "azure/keyVault.json"
       },
@@ -59,6 +59,6 @@
       }
 
     },
-    "required": []
+    "required": ["aadUser", "aadGroup", "tags", "keyVault", "azureContainerRegistry", "aadAppGrafana", "aadAppExternalSecrets", "azureData", "terraformAzureBackend"]
   }
 
