@@ -1,0 +1,34 @@
+{
+    "$id": "https://hpa.hamburg.de/infrastructure/azure/azureData.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Terraform read Data from Azure Schema",
+    "type": "object",
+    "properties": {
+
+
+        "azureadUsersMembers": {
+            "type": "array",
+            "description": "The owners of the App Registration",
+            "items": {
+                "type": "string"
+            }
+        },
+        "azureadUsersOwners": {
+            "type": "array",
+            "description": "The owners of the App Registration",
+            "items": {
+                "type": "string"
+            }
+        },
+
+        "azureadServicePrincipalDisplayName": {
+            "type": "string",
+            "description": "The display name of the Group"
+        },
+        "azureadItAdmObjectId": {
+            "type": "string",
+            "description": "The display name of the Group"
+        }
+    },
+    "required": ["azureadUsersMembers", "azureadUsersOwners", "azureadServicePrincipalDisplayName", "azureadItAdmObjectId"]
+  }

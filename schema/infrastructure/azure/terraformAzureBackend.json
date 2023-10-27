@@ -1,0 +1,24 @@
+{
+    "$id": "https://hpa.hamburg.de/infrastructure/azure/aadGroup.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Azure Backend config for the Terraform State Schema",
+    "type": "object",
+    "properties": {
+
+        "resourceGroupName": {
+            "type": "string",
+            "description": "Name of the resource group the group is located in"
+        },
+
+        "storageAccountName": {
+            "type": "string",
+            "description": "Name of the storage account that terraform state will be saved in"
+        },
+
+        "key": {
+            "type": "string",
+            "description": "Key will be used to create container in the storage account"
+        }
+    },
+    "required": ["resourceGroupName", "storageAccountName", "key"]
+  }

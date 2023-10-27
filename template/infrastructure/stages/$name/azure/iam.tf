@@ -12,7 +12,11 @@ resource "azurerm_role_assignment" "key_vault_admin" {
 
   scope                = module.key_vault.id
   role_definition_name = "Key Vault Administrator"
-  principal_id         = data.azuread_group.main.object_id
+  principal_id         = azuread_group.main.object_id
+
+  depends_on = [
+    azuread_group.main
+  ]
 }
 
 
@@ -20,6 +24,10 @@ resource "azurerm_role_assignment" "resource_group_infra_contributor" {
 
   scope                = module.resource_group_infra.id
   role_definition_name = "Contributor"
-  principal_id         = data.azuread_group.main.object_id
+  principal_id         = azuread_group.main.object_id
+
+  depends_on = [
+    azuread_group.main
+  ]
 
 }

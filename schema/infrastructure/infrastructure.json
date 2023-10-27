@@ -31,9 +31,34 @@
       "azureContainerRegistry": {
         "type": "object",
         "$ref" : "azure/azureContainerRegistry.json"
+      },
+
+      "aadAppGrafana": {
+        "type": "object",
+        "$ref" : "azure/aadAppGrafana.json"
+      },
+
+      "data": {
+        "type": "object",
+        "$ref" : "azure/azureData.json"
+      },
+
+      "keyVaultSecrets": {
+        "type": "object",
+        "$ref" : "azure/keyVault.json"
+      },
+
+      "terraformAzureBackend": {
+        "type": "object",
+        "$ref" : "azure/terraformAzureBackend.json"
+      },
+
+      "aadAppExternalSecrets": {
+        "type": "object",
+        "$ref" : "azure/aadAppExternalSecrets.json"
       }
 
     },
-    "required": ["aadUser"]
+    "required": []
   }
 

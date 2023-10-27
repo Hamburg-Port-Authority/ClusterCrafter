@@ -6,10 +6,51 @@ stages:
       mailNickname: "svc_portdesk-dummy-dev_devops"
     aadGroup:
       displayName: "[PORTDESK]_Dummy_Development_Developer"
-    keyVault:
-      name: kv-dummy-dev-713
     azureContainerRegistry:
       name: acrdummydev
+    aadAppGrafana:
+      name: "grafana_dummy_dev"
+      displayName: "Grafana Dummy Development"
+      appOwners:
+        - "Mr x"
+        - "Mr y"
+      logoutUrl: "hello.com/logout"
+      redirectUris:
+        - "hello-x.com"
+        - "hello-y.com"
+      roles:
+        dummy_developer:
+          app_role_id: "e15be9"
+          principal_object_id: "6714b"
+        admin_dummy:
+          app_role_id: "e15be9"
+          principal_object_id: "8a7042"
+    aadAppExternalSecrets:
+      name: "external_secrets_dummy_dev"
+      displayName: "External Secrets Dummy Development"
+      appOwners:
+        - "Mr x"
+        - "Mr y"
+      logoutUrl: "hello.com/logout"
+      redirectUris:
+        - "hello-x.com"
+        - "hello-y.com"
+    azureData:
+      azureadUsersMembers:
+        - "Mr X"
+        - "Mr Y"
+      azureadUsersOwners:
+        - "Mr X"
+        - "Mr Y"
+      azureadServicePrincipalDisplayName: "terraform-cicd-dummy"
+      azureadItAdmObjectId: "3731edk"
+    keyVault:
+      name: "kv-dummy-dev-713"
+      gitUrl: "github.com/dummy/dummy.git"
+    terraformAzureBackend:
+      storageAccountName: "sadummydev"
+      resourceGroupName: "rg-dummy-dev"
+      key: "development"
     tags:
       maintainer: "Platform Team"
       owner: "Mr X"

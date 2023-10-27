@@ -225,3 +225,22 @@ variable "grafana_app_roles" {
 
   EOT
 }
+
+
+
+variable "external_secrets_aad_app" {
+  type = map(object({
+    display_name                 = string
+    redirect_uris                = list(string)
+    logout_url                   = string
+    app_role_assignment_required = bool
+    app_owners                   = list(string)
+    roles = map(object({
+      app_role_id         = string
+      principal_object_id = string
+    }))
+
+  }))
+
+  default = {}
+}

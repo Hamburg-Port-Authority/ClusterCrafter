@@ -9,7 +9,7 @@ data "azuread_client_config" "current" {}
 
 
 data "azuread_group" "it_adm" {
-  object_id        = "{{ }}"
+  object_id        = "{{ azureData.azureadItAdmObjectId }}"
   security_enabled = true
 
 }
@@ -17,25 +17,15 @@ data "azuread_group" "it_adm" {
 
 data "azuread_service_principal" "devops_terraform_cicd" {
 
-  display_name = "{{ }}"
+  display_name = "{{ azureData.azureadServicePrincipalDisplayName }}"
 }
 
-
-
-data "azuread_group" "main" {
-  display_name     = var.azuread_group_display_name
-  security_enabled = true
-
-  depends_on = [
-    azuread_group.main
-  ]
-}
 
 data "azuread_users" "members" {
-  user_principal_names = "{{ }}" #["", ""]
+  user_principal_names = {{ azureData.azureadUsersMembers }}
 }
 
 data "azuread_users" "owners" {
-  user_principal_names = "{{ }}" #["", ""]
+  user_principal_names = {{ azureData.azureadUsersOwners }}
 }
 

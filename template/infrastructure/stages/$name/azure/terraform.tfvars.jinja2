@@ -10,10 +10,33 @@ key_vault_name = "{{ keyVault.name }}"
 
 acr_name = "{{ azureContainerRegistry.name }}"
 
+
+grafana_aad_app = {
+  "{{ aadAppGrafana.name }}" = {
+    app_owners                   = {{ aadAppGrafana.appOwners }}
+    app_role_assignment_required = true
+    display_name                 = "{{ aadAppGrafana.displayName }}"
+    logout_url                   = "{{ aadAppGrafana.logoutUrl }}"
+    redirect_uris                = {{ aadAppGrafana.redirectUris }}
+    roles =  {{ aadAppGrafana.roles }}
+  }
+}
+
+external_secrets_aad_app = {
+  {{ aadAppExternalSecrets.name }} = {
+    app_owners                   = {{ aadAppExternalSecrets.appOwners }}
+    app_role_assignment_required = false
+    display_name                 = "{{ aadAppExternalSecrets.displayName }}"
+    logout_url                   = "{{ aadAppExternalSecrets.logoutUrl }}"
+    redirect_uris                = {{ aadAppExternalSecrets.redirectUris }}
+    roles                        = {}
+  }
+}
+
 tags = {
   Maintainer  = "{{ tags.maintainer }}"
   Owner       = "{{ tags.owner }}"
   PoC         = "{{ tags.poc }}"
-  TF-Managed  = "{{ tags.tf-managed }}"
+  TF-Managed  = "{{ tags.tfManaged }}"
   Environment = "{{ tags.environment }}"
 }
