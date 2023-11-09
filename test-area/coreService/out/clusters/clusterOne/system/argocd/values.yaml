@@ -1,0 +1,124 @@
+psp:
+  privileged: psp:system-privileged
+
+init:
+  application:
+    - repository: https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog.git
+      path: ./
+      targetRevision: main
+      manifestId: testone 
+      applicationEnabled: true
+    - repository: https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog2.git
+      path: ./
+      targetRevision: main
+      manifestId: testtwo 
+      applicationEnabled: true
+    - repository: https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog3.git
+      path: ./
+      targetRevision: main
+      manifestId: testtwo 
+      applicationEnabled: false
+  repository:
+    - url: "https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog.git"
+      username: "my_awesome_user"
+      password: "my_awesome_pat"
+      manifestId: testone
+      repositoryEnabled: true
+      insecure: "false"
+      forceHttpBasicAuth: "true" 
+    - url: "https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog2.git"
+      username: "my_awesome_usertwo"
+      password: "my_awesome_pattwo"
+      manifestId: testtwo
+      repositoryEnabled: false
+      insecure: "false"
+      forceHttpBasicAuth: "true" 
+    - url: "https://github.com/Hamburg-Port-Authority/kubernetes-service-catalog3.git"
+      username: "my_awesome_userthree"
+      password: "my_awesome_patthree"
+      manifestId: testtwo
+      repositoryEnabled: true
+      insecure: "false"
+      forceHttpBasicAuth: "true" 
+
+ingress:
+  enabled: true
+  host: "argocd"
+  issuer: "http"
+  className: "nginx"
+
+
+argo-cd:
+  global:
+    revisionHistoryLimit: "2"
+    image:
+      repository: "quay.io/argoproj/argocd"
+  dex:
+    enabled: false
+    env:
+      - name: HTTP_PROXY
+        value: 'localhost:3128'
+      - name: HTTPS_PROXY
+        value: 'localhost:3128'
+      - name: http_proxy
+        value: 'localhost:3128'
+      - name: https_proxy
+        value: 'localhost:3128'
+      - name: no_proxy
+        value: "127.0.0.1,localhost,.local,.svc"
+      - name: NO_PROXY
+        value: "127.0.0.1,localhost,.local,.svc, argocd-core-repo-server,argocd-core-server,argocd-core-applicationset-controller,argocd-core-dex-server"
+  server:
+    replicas: 3
+    ## Argo CD server Horizontal Pod Autoscaler
+    autoscaling:
+      # -- Enable Horizontal Pod Autoscaler ([HPA]) for the Argo CD server
+      enabled: true
+      # -- Minimum number of replicas for the Argo CD server [HPA]
+      minReplicas: 3
+      # -- Maximum number of replicas for the Argo CD server [HPA]
+      maxReplicas: 5
+    env:
+      - name: HTTP_PROXY
+        value: 'localhost:3128'
+      - name: HTTPS_PROXY
+        value: 'localhost:3128'
+      - name: http_proxy
+        value: 'localhost:3128'
+      - name: https_proxy
+        value: 'localhost:3128'
+      - name: no_proxy
+        value: "127.0.0.1,localhost,.local,.svc"
+      - name: NO_PROXY
+        value: "127.0.0.1,localhost,.local,.svc, argocd-core-repo-server,argocd-core-server,argocd-core-applicationset-controller,argocd-core-dex-server"
+  repoServer:
+    replicas: 3
+    ## Repo server Horizontal Pod Autoscaler
+    autoscaling:
+      # -- Enable Horizontal Pod Autoscaler ([HPA]) for the repo server
+      enabled: true
+      # -- Minimum number of replicas for the Argo CD server [HPA]
+      minReplicas: 3
+      # -- Maximum number of replicas for the Argo CD server [HPA]
+      maxReplicas: 5
+    env:
+      - name: HTTP_PROXY
+        value: 'localhost:3128'
+      - name: HTTPS_PROXY
+        value: 'localhost:3128'
+      - name: http_proxy
+        value: 'localhost:3128'
+      - name: https_proxy
+        value: 'localhost:3128'
+      - name: no_proxy
+        value: "127.0.0.1,localhost,.local,.svc"
+      - name: NO_PROXY
+        value: "127.0.0.1,localhost,.local,.svc, argocd-core-repo-server,argocd-core-server,argocd-core-applicationset-controller,argocd-core-dex-server"
+  ## Application controller
+  controller:
+    replicas: 3
+  applicationSet:
+    replicaCount: "3"
+  redis:
+    image:
+      repository: hub.docker.com/library/redis

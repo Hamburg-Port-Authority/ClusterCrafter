@@ -1,0 +1,29 @@
+{
+  "$id": "https://hpa.hamburg.de/overlay/coreService/system/argocd/argocd-ingress.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Service ArgoCD Ingress Schema",
+  "type": "object",
+  "properties": {
+    "enabled":  {
+      "type": "string",
+      "description": "Flag to enable the ingress.",
+      "default": ""
+    },
+    "hostname":  {
+      "type": "string",
+      "description": "The desired hostname for the ingress. This is a combination of the given hostname here and the default.defaultServiceUri",
+      "default": "true"
+    },
+    "className":  {
+      "type": "string",
+      "description": "Ingress class to use",
+      "default": "true"
+    },
+    "issuer":  {
+      "type": "string",
+      "description": "",
+      "default": "default"
+    }
+  },
+  "required": ["enabled","hostname","className","issuer"]
+}

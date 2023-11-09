@@ -1,0 +1,25 @@
+external-secrets:
+  image:
+    repository: ghcr.io/external-secrets/external-secrets
+
+  webhook:
+    image:
+      repository: ghcr.io/external-secrets/external-secrets
+
+  certController:
+    image:
+      repository: ghcr.io/external-secrets/external-secrets
+
+  extraEnv:
+    - name: HTTP_PROXY
+      value: 'localhost:3128'
+    - name: HTTPS_PROXY
+      value: 'localhost:3128'
+    - name: http_proxy
+      value: 'localhost:3128'
+    - name: https_proxy
+      value: 'localhost:3128'
+    - name: no_proxy
+      value: "127.0.0.1,localhost,.local,.svc"
+    - name: NO_PROXY
+      value: "127.0.0.1,localhost,.local,.svc"

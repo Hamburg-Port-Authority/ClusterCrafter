@@ -1,0 +1,14 @@
+{
+    "$id": "https://hpa.hamburg.de/overlay/coreService/dns/dns.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Service DNS Schema",
+    "type": "object",
+    "properties": {
+      "externaldns": {
+        "type": "object",
+        "$ref": "externaldns.json",
+        "description": "ExternalDNS configuration values"
+      }
+    },
+    "required": ["externaldns"]
+  }

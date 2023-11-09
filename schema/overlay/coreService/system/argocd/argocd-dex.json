@@ -1,0 +1,14 @@
+{
+  "$id": "https://hpa.hamburg.de/overlay/coreService/system/argocd/argocd-dex.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Service ArgoCD Dex Schema",
+  "type": "object",
+  "properties": {
+    "enabled":  {
+      "type": "string",
+      "description": "Flag to enable dex.",
+      "default": "false"
+    }
+  },
+  "required": ["enabled"]
+}

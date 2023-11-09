@@ -1,0 +1,32 @@
+#Must be BASE64 encoded
+pdns_api_key: dGVzdGluZzEyMw==
+
+external-dns:
+  pdns:
+    apiUrl: "localhost"
+    apiPort: "1234"
+    secretName: "external-dns"
+
+  image:
+    registry: hub.docker.com
+
+  provider: pdns
+
+  extraVolumeMounts:
+    - name: certs
+      mountPath: "/etc/ssl/certs/corp-ca.pem"
+      subPath: "corp-ca.pem"
+
+  extraVolumes:
+    - name: certs
+      configMap:
+        name: corp-ca
+
+  extraArgs:
+    pdns-tls-enabled: false
+    tls-ca: /etc/ssl/certs/corp-ca.pem
+
+  domainFilters:
+    - *.subdomain.corp.local
+    - *.sub.corp.local
+  txtOwnerId: ""

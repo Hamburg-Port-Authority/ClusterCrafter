@@ -1,0 +1,49 @@
+psp:
+  enabled: "true"
+  privileged: psp:system-privileged
+
+falco:
+  image:
+    registry: hub.docker.com
+  driver:
+    loader:
+      enabled: true
+      initContainer:
+        image:
+          registry: hub.docker.com
+  falcoctl:
+    image:
+      registry: hub.docker.com
+    artifact:
+      install:
+        env: 
+          - name: HTTP_PROXY
+            value: 'localhost:3128'
+          - name: HTTPS_PROXY
+            value: 'localhost:3128'
+          - name: http_proxy
+            value: 'localhost:3128'
+          - name: https_proxy
+            value: 'localhost:3128'
+          - name: no_proxy
+            value: "127.0.0.1,localhost,.local,.svc"
+          - name: NO_PROXY
+            value: "127.0.0.1,localhost,.local,.svc"
+      follow:
+        env: 
+          - name: HTTP_PROXY
+            value: 'localhost:3128'
+          - name: HTTPS_PROXY
+            value: 'localhost:3128'
+          - name: http_proxy
+            value: 'localhost:3128'
+          - name: https_proxy
+            value: 'localhost:3128'
+          - name: no_proxy
+            value: "127.0.0.1,localhost,.local,.svc"
+          - name: NO_PROXY
+            value: "127.0.0.1,localhost,.local,.svc"
+
+falco-exporter:
+  image:
+    registry: hub.docker.com

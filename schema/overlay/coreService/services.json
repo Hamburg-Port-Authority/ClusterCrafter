@@ -1,0 +1,20 @@
+{
+    "$id": "https://hpa.hamburg.de/overlay/coreService/services.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Cluster Services Schema",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "defaults": {
+        "type": "object",
+        "$ref": "defaults.json"
+      },
+      "coreServices": {
+        "type": "object",
+        "$ref": "coreServices.json"
+      }
+    },
+    "required": ["name","defaults", "coreServices"]
+  }

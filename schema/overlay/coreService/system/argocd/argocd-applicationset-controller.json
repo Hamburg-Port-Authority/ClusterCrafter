@@ -1,0 +1,14 @@
+{
+  "$id": "https://hpa.hamburg.de/overlay/coreService/system/argocd/argocd-applicationset-controller.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Service ArgoCD ApplicationSet Controller Schema",
+  "type": "object",
+  "properties": {
+    "replicas":  {
+      "type": "string",
+      "description": "Amount of replicas for the argocd server",
+      "default": "false"
+    }
+  },
+  "required": ["replicas"]
+}

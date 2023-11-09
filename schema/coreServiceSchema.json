@@ -7,7 +7,7 @@
     "clusters": {
       "type": "array",
       "items": {
-        "$ref": "coreService/services.json"
+        "$ref": "overlay/coreService/services.json"
       }
     }
   }

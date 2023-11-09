@@ -1,0 +1,29 @@
+{
+  "$id": "https://hpa.hamburg.de/overlay/coreService/system/argocd/argocd-server.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Service ArgoCD Server Schema",
+  "type": "object",
+  "properties": {
+    "replicas":  {
+      "type": "string",
+      "description": "Amount of replicas for the argocd server",
+      "default": "false"
+    },
+    "autoscalingEnabled": {
+      "type": "string",
+      "description": "Flag to enable autoscaling capabilities of argocd server",
+      "default": "true"
+    },
+    "autoscalingMinReplica": {
+      "type": "string",
+      "description": "",
+      "default": "3"
+    },
+    "autoscalingMaxReplica": {
+      "type": "string",
+      "description": "",
+      "default": "5"
+    }
+  },
+  "required": ["enabled", "autoscalingEnabled", "autoscalingMinReplica", "autoscalingMaxReplica"]
+}

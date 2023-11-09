@@ -1,0 +1,49 @@
+{
+  "$id": "https://hpa.hamburg.de/overlay/coreService/system/argocd/argocd-repo-init.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Service ArgoCD Repository Init Schema",
+  "type": "object",
+  "properties": {
+    "applicationEnabled":  {
+      "type": "string",
+      "description": "Flag to control if an argocd application for the given repository should be automatically created.",
+      "default": "true"
+    },
+    "repositoryEnabled":  {
+      "type": "string",
+      "description": "Flag to control if a git repository should be automatically created.",
+      "default": "true"
+    },
+    "manifestId":  {
+      "type": "string",
+      "description": "Simple id to identify the to be created manifests.",
+      "default": "default"
+    },
+    "gitRepositoryURL":  {
+      "type": "string",
+      "description": "URL for the git repository to use.",
+      "default": "https://github.com/Hamburg-Port-Authority/ClusterCrafter.git"
+    },
+    "gitRepositoryPath":  {
+      "type": "string",
+      "description": "Path within the repository to use.",
+      "default": "./"
+    },
+    "gitRepositoryPAT":  {
+      "type": "string",
+      "description": "Personal Access Token to connect towarads the git repository.",
+      "default": "my_aweesome_pat"
+    },
+    "gitRepositoryUser":  {
+      "type": "string",
+      "description": "User to connect with towards the git service",
+      "default": "my_awesome_user"
+    },
+    "targetRevision":  {
+      "type": "string",
+      "description": "Targeted git revision.",
+      "default": "main"
+    }
+  },
+  "required": ["applicationEnabled","repositoryEnabled","manifestId","gitRepositoryURL","gitRepositoryPath","gitRepositoryPAT","gitRepositoryUser","targetRevision"]
+}

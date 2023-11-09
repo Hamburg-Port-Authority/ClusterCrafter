@@ -1,0 +1,28 @@
+{
+  "$id": "https://hpa.hamburg.de/overlay/coreService/security/falco.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Service Falco Schema",
+  "type": "object",
+  "properties": {
+    "privilegedPspName": {
+      "type": "string",
+      "description": "Name of the privileged psp within the cluster for cert-manager to work in all namespaces",
+      "default": "psp:system-privileged"
+    },
+    "imageRegistry": {
+      "type": "string",
+      "description": "Repository under which the image is available. For example: hub.docker.com",
+      "default": "hub.docker.com"
+    },
+    "enableDriverLoader": {
+      "type": "string",
+      "description": "Trigger to enable driver loader",
+      "default": "true"
+    }
+  },
+  "required": [
+    "privilegedPspName",
+    "imageRegistry",
+    "enableDriverLoader"
+  ]
+}

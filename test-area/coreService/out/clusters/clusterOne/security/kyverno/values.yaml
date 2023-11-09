@@ -1,0 +1,43 @@
+kyverno:
+  test:
+    image:
+      registry: hub.docker.com
+      repository: busybox
+  webhooksCleanup:
+    image: hub.docker.com/bitnami/kubectl:latest
+  # Cleanup cronjobs to prevent internal resources from stacking up in the cluster
+  cleanupJobs:
+    admissionReports:
+      image:
+        registry: hub.docker.com
+        repository: bitnami/kubectl
+    clusterAdmissionReports:
+      image:
+        registry: hub.docker.com
+        repository: bitnami/kubectl
+
+  # Admission controller configuration
+  admissionController:
+    container:
+      image:
+        registry: ghcr.io
+        repository: kyverno/kyverno
+    initContainer:
+      image:
+        registry: ghcr.io
+        repository: kyverno/kyvernopre
+  # Background controller configuration
+  backgroundController:
+    image:
+      registry: ghcr.io
+      repository: kyverno/background-controller
+  # Cleanup controller configuration
+  cleanupController:
+    image:
+      registry: ghcr.io
+      repository: kyverno/cleanup-controller
+  # Reports controller configuration
+  reportsController:
+    image:
+      registry: ghcr.io
+      repository: kyverno/reports-controller
