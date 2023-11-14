@@ -1,4 +1,21 @@
 observability:
+  victoriaMetricsOperator:
+    createCRD: true
+    replicaCount: 1
+    rbac:
+      create: true
+      enabled: true
+    serviceAccount: true
+    resources:
+      cpuLimit: 300
+      memoryLimit: 512
+      cpuRequest: 100
+      memoryRequest: 256
+    environment:
+      vmVmalertdefaultConfigreloadimage: "ghcr.io/jimmidyson/configmap-reload:v0.11.0"
+      vmVmagentdefaultConfigreloadimage: "ghcr.io/prometheus-operator/prometheus-config-reloader:v0.64.1"
+      vmVmalertmanagerConfigreloadimage: "ghcr.io/jimmidyson/configmap-reload:v0.11.0"
+    serviceMonitor: true
   victoriaMetricsCluster:
     defaults:
       enabled: true
