@@ -1,0 +1,69 @@
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMCluster
+metadata:
+  name: vmcluster
+spec:
+  replicationFactor: 2
+  vmstorage:
+    replicaCount: 3
+    storageDataPath: "/vm-data"
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: "app.kubernetes.io/name"
+              operator: In
+              values:
+              - "vmstorage"
+          topologyKey: "kubernetes.io/hostname"
+    storage:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 10Gi
+    resources:
+      limits:
+        cpu: 2000m
+        memory: 2048Mi
+  vmselect:
+    replicaCount: 3
+    cacheMountPath: "/select-cache"
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: "app.kubernetes.io/name"
+              operator: In
+              values:
+              - "vmselect"
+          topologyKey: "kubernetes.io/hostname"
+    storage:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 5Gi
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1024Mi
+  vminsert:
+    replicaCount: 4
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: "app.kubernetes.io/name"
+              operator: In
+              values:
+              - "vminsert"
+          topologyKey: "kubernetes.io/hostname"
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 512Mi
