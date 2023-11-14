@@ -1,0 +1,71 @@
+---
+{% if observability.victoriaMetricsCluster.defaults.enabled %}
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMCluster
+metadata:
+  name: vmcluster
+spec:
+  replicationFactor: {{ observability.victoriaMetricsCluster.replicationFactor }}
+  vmstorage:
+    replicaCount: {{ observability.victoriaMetricsCluster.vmstorage.replicaCount }}
+    storageDataPath: "/vm-data"
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: "app.kubernetes.io/name"
+              operator: In
+              values:
+              - "vmstorage"
+          topologyKey: "kubernetes.io/hostname"
+    storage:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: {{ observability.victoriaMetricsCluster.vmstorage.storageSize }}Gi
+    resources:
+      limits:
+        cpu: {{ observability.victoriaMetricsCluster.vmstorage.resources.cpuLimit }}m
+        memory: {{ observability.victoriaMetricsCluster.vmstorage.resources.memoryLimit }}Mi
+  vmselect:
+    replicaCount: {{ observability.victoriaMetricsCluster.vmselect.replicaCount }}
+    cacheMountPath: "/select-cache"
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: "app.kubernetes.io/name"
+              operator: In
+              values:
+              - "vmselect"
+          topologyKey: "kubernetes.io/hostname"
+    storage:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: {{ observability.victoriaMetricsCluster.vmselect.storageSize }}Gi
+    resources:
+      limits:
+        cpu: {{ observability.victoriaMetricsCluster.vmselect.resources.cpuLimit }}m
+        memory: {{ observability.victoriaMetricsCluster.vmselect.resources.memoryLimit }}Mi
+  vminsert:
+    replicaCount: {{ observability.victoriaMetricsCluster.vminsert.replicaCount }}
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: "app.kubernetes.io/name"
+              operator: In
+              values:
+              - "vminsert"
+          topologyKey: "kubernetes.io/hostname"
+    resources:
+      limits:
+        cpu: {{ observability.victoriaMetricsCluster.vminsert.resources.cpuLimit }}m
+        memory: {{ observability.victoriaMetricsCluster.vminsert.resources.memoryLimit }}Mi
+{% endif %}
