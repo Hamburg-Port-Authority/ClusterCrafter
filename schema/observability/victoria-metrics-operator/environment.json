@@ -1,0 +1,21 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/victoria-metrics-operator/environment.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Observability Victoria Metrics Operator Environment Configuration Schema",
+    "type": "object",
+    "properties": {
+        "vmVmalertdefaultConfigreloadimage": {
+            "type": "string",
+            "default": "ghcr.io/jimmidyson/configmap-reload:v0.11.0"
+        },
+        "vmVmagentdefaultConfigreloadimage": {
+            "type": "string",
+            "default": "ghcr.io/prometheus-operator/prometheus-config-reloader:v0.64.1"
+        },
+        "vmVmalertmanagerConfigreloadimage":{
+            "type": "string",
+            "default": "ghcr.io/jimmidyson/configmap-reload:v0.11.0"
+        }
+    },
+    "required": ["defaults"]
+  }

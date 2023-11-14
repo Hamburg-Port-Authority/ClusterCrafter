@@ -1,0 +1,29 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/victoria-metrics-operator/operator.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Observability Victoria Metrics Operator Configuration Schema",
+    "type": "object",
+    "properties": {
+        "disablePrometheusConverter":{
+            "type": "boolean",
+            "default": false
+        },
+        "prometheusConverterAddArgocdIgnoreAnnotations":{
+            "type": "boolean",
+            "default": true
+        },
+        "pspAutoCreationEnabled":{
+            "type": "boolean",
+            "default": true
+        },
+        "enableConverterOwnership":{
+            "type": "boolean",
+            "default": false
+        },
+        "useCustomConfigReloader":{
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "required": ["create", "enabled"]
+  }

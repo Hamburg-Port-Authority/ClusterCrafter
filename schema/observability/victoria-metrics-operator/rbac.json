@@ -1,0 +1,17 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/victoria-metrics-operator/rbac.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Observability Victoria Metrics Operator Rbac Configuration Schema",
+    "type": "object",
+    "properties": {
+        "create":{
+            "type": "boolean",
+            "default": true
+        },
+        "enabled":{
+            "type": "boolean",
+            "default": true
+        }
+    },
+    "required": ["create", "enabled"]
+  }

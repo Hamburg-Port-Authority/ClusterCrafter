@@ -1,0 +1,41 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/victoria-metrics-operator/configuration.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Observability Victoria Metrics Operator Configuration Schema",
+    "type": "object",
+    "properties": {
+        "createCRD": {
+            "type": "boolean",
+            "default": true
+        },
+        "replicaCount": {
+            "type": "integer",
+            "default": 1
+        },
+        "rbac":{
+            "type": "object",
+            "$ref": "rbac.json"
+        },
+        "operator": {
+            "type": "object",
+            "$ref": "operator.json"
+        },
+        "serviceAccount": {
+            "type": "boolean",
+            "default": true
+        },
+        "resources": {
+            "type": "object",
+            "$ref": "../resources.json"
+        },
+        "environment": {
+            "type": "object",
+            "$ref": "environment.json"
+        },
+        "serviceMonitor":{
+            "type": "boolean",
+            "default": true
+        }
+    },
+    "required": ["defaults"]
+  }

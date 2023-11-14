@@ -11,6 +11,14 @@
       "memoryLimit": {
         "type": "integer",
         "description": "Amount of RAM units to provision for service. In Mi"
+      },
+      "cpuRequest": {
+        "type": "integer",
+        "description": "Amount of CPU units to provision for service. In m"
+      },
+      "memoryRequest": {
+        "type": "integer",
+        "description": "Amount of RAM units to provision for service. In Mi"
       }
     },
     "required": ["cpuLimit", "memoryLimit"]
