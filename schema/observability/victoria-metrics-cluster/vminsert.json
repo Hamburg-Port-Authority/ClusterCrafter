@@ -1,0 +1,18 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/victoria-metrics-cluster/vminsert.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Observability Victoria Metrics Insert Configuration Schema",
+    "type": "object",
+    "properties": {
+        "replcaCount": {
+            "type": "integer",
+            "default": "4"
+        },
+        "resources": {
+            "type": "object",
+            "$ref": "../resources.json"
+        }
+
+    },
+    "required": ["replcaCount", "storageSize", "resources"]
+  }

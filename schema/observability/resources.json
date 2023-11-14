@@ -1,0 +1,17 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/resource.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Resources Schema",
+    "type": "object",
+    "properties": {
+      "cpuLimit": {
+        "type": "integer",
+        "description": "Amount of CPU units to provision for service. In m"
+      },
+      "memoryLimit": {
+        "type": "integer",
+        "description": "Amount of RAM units to provision for service. In Mi"
+      }
+    },
+    "required": ["cpuLimit", "memoryLimit"]
+  }

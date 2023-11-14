@@ -1,0 +1,23 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/victoria-metrics-cluster/vmselect.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Observability Victoria Metrics Select Configuration Schema",
+    "type": "object",
+    "properties": {
+        "replcaCount": {
+            "type": "integer",
+            "default": "2"
+        },
+        "storageSize": {
+            "type": "integer",
+            "default": "10",
+            "description": "Value is amount in Gi. Automatically appended"
+        },
+        "resources": {
+            "type": "object",
+            "$ref": "../resources.json"
+        }
+
+    },
+    "required": ["replcaCount", "storageSize", "resources"]
+  }

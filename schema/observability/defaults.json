@@ -1,0 +1,13 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/defaults.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Defaults Schema",
+    "type": "object",
+    "properties": {
+      "enabled": {
+        "type": "boolean",
+        "description": "Flag to enable or disable component."
+      }
+    },
+    "required": ["enabled"]
+  }

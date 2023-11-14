@@ -1,0 +1,14 @@
+{
+  "$id": "https://hpa.hamburg.de/observability.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Observability Cluster Package Schema",
+  "type": "object",
+  "properties": {
+    "observability": {
+      "victoriaMetricsCluster":{
+        "type": "object",
+        "$ref": "observability/victoria-metrics-cluster/configuration.json"
+      }
+    }
+  }
+}
