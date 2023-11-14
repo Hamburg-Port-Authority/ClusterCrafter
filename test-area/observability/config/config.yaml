@@ -1,0 +1,22 @@
+observability:
+  victoriaMetricsCluster:
+    defaults:
+      enabled: true
+    replicationFactor: 2
+    vmstorage:
+      replicaCount: 3
+      storageSize: 10
+      resources:
+        cpuLimit: 2000
+        memoryLimit: 2048
+    vmselect:
+      replicaCount: 3
+      storageSize: 5
+      resources:
+        cpuLimit: 1000
+        memoryLimit: 1024
+    vminsert:
+      replicaCount: 4
+      resources:
+        cpuLimit: 1000
+        memoryLimit: 512
