@@ -1,0 +1,32 @@
+victoria-metrics-operator:
+  createCRD: {{ observability.victoriaMetricsOperator.createCRD }}
+  replicaCount: {{ observability.victoriaMetricsOperator.replicaCount }}
+  logLevel: "info"
+  rbac:
+    create: {{ observability.victoriaMetricsOperator.rbac.create }}
+    pspEnabled: {{ observability.victoriaMetricsOperator.rbac.enabled }}
+  operator:
+    disable_prometheus_converter: {{ observability.victoriaMetricsOperator.operator.disablePrometheusConverter }}
+    prometheus_converter_add_argocd_ignore_annotations: {{ observability.victoriaMetricsOperator.operator.prometheusConverterAddArgocdIgnoreAnnotations }}
+    psp_auto_creation_enabled: {{ observability.victoriaMetricsOperator.operator.pspAutoCreationEnabled }}
+    enable_converter_ownership: {{ observability.victoriaMetricsOperator.operator.enableConverterOwnership }}
+    useCustomConfigReloader: {{ observability.victoriaMetricsOperator.operator.useCustomConfigReloader }}
+  serviceAccount:
+    create: {{ observability.victoriaMetricsOperator.serviceAccount }}
+  resources:
+    limits:
+      cpu: {{ observability.victoriaMetricsOperator.resources.cpuLimit }}m
+      memory: {{ observability.victoriaMetricsOperator.resources.memoryLimit }}Mi
+    requests:
+      cpu: {{ observability.victoriaMetricsOperator.resources.cpuRequest }}m
+      memory: {{ observability.victoriaMetricsOperator.resources.memoryRequest }}Mi
+  env:
+    #-- available env variables found here: https://docs.victoriametrics.com/operator/vars.html
+    - name: VM_VMALERTDEFAULT_CONFIGRELOADIMAGE
+      value: {{ observability.victoriaMetricsOperator.environment.vmVmalertdefaultConfigreloadimage }}
+    - name: VM_VMAGENTDEFAULT_CONFIGRELOADIMAGE
+      value: {{ observability.victoriaMetricsOperator.environment.vmVmagentdefaultConfigreloadimage }}
+    - name: VM_VMALERTMANAGER_CONFIGRELOADERIMAGE
+      value: {{ observability.victoriaMetricsOperator.environment.vmVmalertmanagerConfigreloadimage }}
+  serviceMonitor:
+    enabled: {{ observability.victoriaMetricsOperator.serviceMonitor }}
