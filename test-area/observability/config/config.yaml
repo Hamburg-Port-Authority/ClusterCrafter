@@ -43,3 +43,13 @@ observability:
       resources:
         cpuLimit: 1000
         memoryLimit: 512
+  victoriaMetricsAgent:
+    defaults:
+      enabled: true
+    imageRepository: "victoriametrics/vmagent"
+    remoteWriteUrl: "http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus"
+    ingress:
+      enabled: true
+      ingressClassName: "nginx"
+      clusterIusser: "prod"
+      commonName: "metrics-agent.my.awesome.cluster.tld"

@@ -27,4 +27,4 @@ spec:
     - hosts:
         - {{ observability.victoriaMetricsAgent.ingress.commonName  }}
       secretName: {{ observability.victoriaMetricsAgent.ingress.commonName  }}
-{{% end %}}
+{% endif %}

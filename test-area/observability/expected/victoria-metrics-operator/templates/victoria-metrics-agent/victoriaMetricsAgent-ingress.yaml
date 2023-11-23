@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vmagent-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: 
+    cert-manager.io/renew-before: 360h #15 days
+    cert-manager.io/common-name: metrics-agent.my.awesome.cluster.tld
+    kubernetes.io/tls-acme: "true"
+spec:
+  rules:
+    - host: metrics-agent.my.awesome.cluster.tld
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vmagent-victoria-metrics-agent
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - metrics-agent.my.awesome.cluster.tld
+      secretName: metrics-agent.my.awesome.cluster.tld

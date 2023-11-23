@@ -1,0 +1,24 @@
+---
+## https://new.docs.victoriametrics.com/operator/resources/vmagent/
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAgent
+metadata:
+  name: victoria-metrics-agent
+spec:
+  image:
+    repository: victoriametrics/vmagent
+  extraArgs:
+    envflag.enable: "true"
+    envflag.prefix: VM_
+    loggerFormat: json
+    promscrape.maxScrapeSize: "167772160"
+    promscrape.streamParse: "true"
+  additionalScrapeConfigs:
+    name: vmagent-additional-scrape-configs
+    key: additional-scrape-configs.yaml
+  remoteWrite:
+    - url: http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus
+  scrapeInterval: 10s
+  selectAllByDefault: true
+  serviceAccountName: victoria-metrics-agent
+  replicaCount: 1
