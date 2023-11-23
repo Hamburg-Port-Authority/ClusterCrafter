@@ -1,0 +1,26 @@
+---
+{%- if observability.victoriaMetricsAgent.defaults.enabled %}
+## https://new.docs.victoriametrics.com/operator/resources/vmagent/
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAgent
+metadata:
+  name: victoria-metrics-agent
+spec:
+  image:
+    repository: {{ observability.victoriaMetricsAgent.imageRepository }}
+  extraArgs:
+    envflag.enable: "true"
+    envflag.prefix: VM_
+    loggerFormat: json
+    promscrape.maxScrapeSize: "167772160"
+    promscrape.streamParse: "true"
+  additionalScrapeConfigs:
+    name: vmagent-additional-scrape-configs
+    key: additional-scrape-configs.yaml
+  remoteWrite:
+    - url: {{ observability.victoriaMetricsAgent.remoteWriteUrl }}
+  scrapeInterval: 10s
+  selectAllByDefault: true
+  serviceAccountName: victoria-metrics-agent
+  replicaCount: 1
+{%- endif %}

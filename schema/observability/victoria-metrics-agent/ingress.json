@@ -1,0 +1,29 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/victoria-metrics-agent/ingress.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Observability Victoria Metrics Agent Ingress Configuration Schema",
+    "type": "object",
+    "properties": {
+        "enabled": {
+            "type": "boolean",
+            "default": true
+        },
+        "ingressClassName": {
+            "type": "string",
+            "default": "nginx"
+        },
+        "clusterIssuer": {
+            "type": "string",
+            "default": "production-issuer"
+        },
+        "commonName": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "enabled",
+        "ingressClassName",
+        "clusterIssuer",
+        "commonName"
+    ]
+}

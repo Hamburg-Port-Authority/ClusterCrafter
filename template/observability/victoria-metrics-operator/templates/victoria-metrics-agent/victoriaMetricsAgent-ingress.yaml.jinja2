@@ -1,0 +1,30 @@
+---
+{%- if observability.victoriaMetricsAgent.defaults.enabled and observability.victoriaMetricsAgent.ingress.enabled %}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: vmagent-ingress
+  annotations:
+    kubernetes.io/ingress.class: {{ observability.victoriaMetricsAgent.ingress.ingressClassName  }}
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: {{ observability.victoriaMetricsAgent.ingress.clusterIssuer  }}
+    cert-manager.io/renew-before: 360h #15 days
+    cert-manager.io/common-name: {{ observability.victoriaMetricsAgent.ingress.commonName  }}
+    kubernetes.io/tls-acme: "true"
+spec:
+  rules:
+    - host: {{ observability.victoriaMetricsAgent.ingress.commonName  }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vmagent-victoria-metrics-agent
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - {{ observability.victoriaMetricsAgent.ingress.commonName  }}
+      secretName: {{ observability.victoriaMetricsAgent.ingress.commonName  }}
+{{% end %}}

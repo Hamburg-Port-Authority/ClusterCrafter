@@ -12,7 +12,11 @@
       "victoriaMetricsOperator":{
         "type": "object",
         "$ref": "observability/victoria-metrics-operator/configuration.json"
-      }
+      },
+      "victoriaMetricsAgent":{
+        "type": "object",
+        "$ref": "observability/victoria-metrics-agent/configuration.json"
+      },
     }
   }
 }

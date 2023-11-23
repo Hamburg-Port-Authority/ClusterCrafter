@@ -1,0 +1,26 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/victoria-metrics-agent/configuration.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Observability Victoria Metrics Agent Configuration Schema",
+    "type": "object",
+    "properties": {
+        "defaults": {
+            "type": "object",
+            "$ref": "../defaults.json"
+        },
+        "imageRepository": {
+            "type": "string",
+            "default": "victoriametrics/vmagent"
+        },
+        "remoteWriteUrl": {
+            "type": "string",
+            "default": "http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus"
+        },
+        "ingress": {
+            "type": "object",
+            "$ref": "ingress.json"
+        }
+
+    },
+    "required": ["defaults", "imageRepository", "remoteWriteUrl", "ingress"]
+  }
