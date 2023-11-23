@@ -6,6 +6,12 @@ observability:
       create: true
       enabled: true
     serviceAccount: true
+    operator:
+      disablePrometheusConverter: false
+      prometheusConverterAddArgocdIgnoreAnnotations: true
+      pspAutoCreationEnabled: true
+      enableConverterOwnership: false
+      useCustomConfigReloader: false
     resources:
       cpuLimit: 300
       memoryLimit: 512

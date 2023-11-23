@@ -6,11 +6,11 @@ victoria-metrics-operator:
     create: true
     pspEnabled: true
   operator:
-    disable_prometheus_converter: 
-    prometheus_converter_add_argocd_ignore_annotations: 
-    psp_auto_creation_enabled: 
-    enable_converter_ownership: 
-    useCustomConfigReloader: 
+    disable_prometheus_converter: false
+    prometheus_converter_add_argocd_ignore_annotations: true
+    psp_auto_creation_enabled: true
+    enable_converter_ownership: false
+    useCustomConfigReloader: false
   serviceAccount:
     create: true
   resources:
