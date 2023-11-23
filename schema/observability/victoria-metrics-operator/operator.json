@@ -4,26 +4,32 @@
     "title": "Observability Victoria Metrics Operator Configuration Schema",
     "type": "object",
     "properties": {
-        "disablePrometheusConverter":{
+        "disablePrometheusConverter": {
             "type": "boolean",
             "default": false
         },
-        "prometheusConverterAddArgocdIgnoreAnnotations":{
+        "prometheusConverterAddArgocdIgnoreAnnotations": {
             "type": "boolean",
             "default": true
         },
-        "pspAutoCreationEnabled":{
+        "pspAutoCreationEnabled": {
             "type": "boolean",
             "default": true
         },
-        "enableConverterOwnership":{
+        "enableConverterOwnership": {
             "type": "boolean",
             "default": false
         },
-        "useCustomConfigReloader":{
+        "useCustomConfigReloader": {
             "type": "boolean",
             "default": false
         }
     },
-    "required": ["create", "enabled"]
-  }
+    "required": [
+        "disablePrometheusConverter",
+        "prometheusConverterAddArgocdIgnoreAnnotations",
+        "pspAutoCreationEnabled",
+        "enableConverterOwnership",
+        "useCustomConfigReloader"
+    ]
+}

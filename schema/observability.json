@@ -8,6 +8,10 @@
       "victoriaMetricsCluster":{
         "type": "object",
         "$ref": "observability/victoria-metrics-cluster/configuration.json"
+      },
+      "victoriaMetricsOperator":{
+        "type": "object",
+        "$ref": "observability/victoria-metrics-operator/configuration.json"
       }
     }
   }

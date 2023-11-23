@@ -12,7 +12,7 @@
             "type": "integer",
             "default": 1
         },
-        "rbac":{
+        "rbac": {
             "type": "object",
             "$ref": "rbac.json"
         },
@@ -32,10 +32,19 @@
             "type": "object",
             "$ref": "environment.json"
         },
-        "serviceMonitor":{
+        "serviceMonitor": {
             "type": "boolean",
             "default": true
         }
     },
-    "required": ["defaults"]
-  }
+    "required": [
+        "createCRD",
+        "replicaCount",
+        "rbac",
+        "operator",
+        "serviceAccount",
+        "resources",
+        "environment",
+        "serviceMonitor"
+    ]
+}
