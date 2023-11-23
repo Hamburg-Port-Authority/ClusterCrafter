@@ -53,3 +53,12 @@ observability:
       ingressClassName: "nginx"
       clusterIusser: "prod"
       commonName: "metrics-agent.my.awesome.cluster.tld"
+  victoriaMetricsAlert:
+    defaults:
+      enabled: true
+    imageRepository: "victoriametrics/vmagent"
+    remoteReadUrl: "http://victoria-metrics-cluster-vmselect.default:8481/select/0/prometheus"
+    remoteWriteUrl: "http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus"
+    notifiersUrl: "http://vmalertmanager-alertmanager.victoria-metrics:9093/"
+    datasourceUrl: "http://victoria-metrics-cluster-vmselect.default:8481/select/0/prometheus"
+    

@@ -17,6 +17,10 @@
         "type": "object",
         "$ref": "observability/victoria-metrics-agent/configuration.json"
       },
+      "victoriaMetricsAlert":{
+        "type": "object",
+        "$ref": "observability/victoria-metrics-alert/configuration.json"
+      },
     }
   }
 }

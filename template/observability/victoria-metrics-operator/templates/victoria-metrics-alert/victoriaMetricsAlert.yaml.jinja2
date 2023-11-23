@@ -1,0 +1,27 @@
+---
+{%- if observability.victoriaMetricsAlert.defaults.enabled %}
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAlert
+metadata:
+  name: victoria-metrics-alert
+spec:
+  datasource:
+    url: {{ observability.victoriaMetricsAlert.datasourceUrl }}
+  evaluationInterval: 15s
+  extraArgs:
+    remoteWrite.disablePathAppend: "true"
+  image:
+    repository: {{ observability.victoriaMetricsAlert.imageRepository }}
+  notifiers:
+  - url: {{ observability.victoriaMetricsAlert.notifiersUrl }}
+  remoteRead:
+    url: {{ observability.victoriaMetricsAlert.remoteReadUrl }}
+  remoteWrite:
+    {%- if observability.victoriaMetricsAgent.defaults.enabled %}
+    url: {{ observability.victoriaMetricsAgent.remoteWriteUrl }}
+    {%- else %}
+    url: {{ observability.victoriaMetricsAlert.remoteWriteUrl }}
+    {%- endif %}
+  selectAllByDefault: true
+
+{% endif %}

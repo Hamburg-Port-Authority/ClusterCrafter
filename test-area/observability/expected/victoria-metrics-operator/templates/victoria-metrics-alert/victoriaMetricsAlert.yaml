@@ -1,0 +1,21 @@
+---
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAlert
+metadata:
+  name: victoria-metrics-alert
+spec:
+  datasource:
+    url: http://victoria-metrics-cluster-vmselect.default:8481/select/0/prometheus
+  evaluationInterval: 15s
+  extraArgs:
+    remoteWrite.disablePathAppend: "true"
+  image:
+    repository: victoriametrics/vmagent
+  notifiers:
+  - url: http://vmalertmanager-alertmanager.victoria-metrics:9093/
+  remoteRead:
+    url: http://victoria-metrics-cluster-vmselect.default:8481/select/0/prometheus
+  remoteWrite:
+    url: http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus
+  selectAllByDefault: true
+

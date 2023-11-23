@@ -1,0 +1,39 @@
+{
+    "$id": "https://hpa.hamburg.de/observability/victoria-metrics-alert/configuration.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Observability Victoria Metrics Alert Configuration Schema",
+    "type": "object",
+    "properties": {
+        "defaults": {
+            "type": "object",
+            "$ref": "../defaults.json"
+        },
+        "imageRepository": {
+            "type": "string",
+            "default": "victoriametrics/vmagent"
+        },
+        "remoteReadUrl": {
+            "type": "string",
+            "default": "http://victoria-metrics-cluster-vmselect.default:8481/select/0/prometheus"
+        },
+        "remoteWriteUrl": {
+            "type": "string",
+            "default": "http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus"
+        },
+        "notifiersUrl": {
+            "type": "string",
+            "default": "http://vmalertmanager-alertmanager.default:9093/"
+        },
+        "datasourceUrl": {
+            "type": "string",
+            "default": "http://victoria-metrics-cluster-vmselect.default:8481/select/0/prometheus"
+        }
+    },
+    "required": [
+        "defaults",
+        "datasourceUrl",
+        "imageRepository",
+        "remoteReadUrl",
+        "notifiersUrl"
+    ]
+}
