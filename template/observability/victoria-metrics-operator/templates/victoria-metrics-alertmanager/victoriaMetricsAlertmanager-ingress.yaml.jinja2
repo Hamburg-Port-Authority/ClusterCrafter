@@ -1,0 +1,29 @@
+---
+{%- if observability.victoriaMetricsAlertmanager.defaults.enabled and observability.victoriaMetricsAlertmanager.ingress.enabled %}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-alertmanager
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: {{ observability.victoriaMetricsAlertmanager.ingress.clusterIssuer }}
+    cert-manager.io/renew-before: 360h
+    cert-manager.io/common-name: {{ observability.victoriaMetricsAlertmanager.ingress.commonName }}
+spec:
+  ingressClassName: {{ observability.victoriaMetricsAlertmanager.ingress.ingressClassName }}
+  rules:
+  - host: {{ observability.victoriaMetricsAlertmanager.ingress.commonName }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: vmalertmanager-alertmanager
+            port:
+              number: 9093
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+    - hosts:
+      - {{ observability.victoriaMetricsAlertmanager.ingress.commonName }}
+      secretName: {{ observability.victoriaMetricsAlertmanager.ingress.commonName }}
+{% endif %}

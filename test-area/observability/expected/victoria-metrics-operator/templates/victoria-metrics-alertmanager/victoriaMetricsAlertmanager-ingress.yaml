@@ -1,0 +1,27 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-alertmanager
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: 
+    cert-manager.io/renew-before: 360h
+    cert-manager.io/common-name: alertmanager.my.awesome.cluster.tld
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: alertmanager.my.awesome.cluster.tld
+    http:
+      paths:
+      - backend:
+          service:
+            name: vmalertmanager-alertmanager
+            port:
+              number: 9093
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+    - hosts:
+      - alertmanager.my.awesome.cluster.tld
+      secretName: alertmanager.my.awesome.cluster.tld

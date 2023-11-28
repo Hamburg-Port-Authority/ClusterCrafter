@@ -18,4 +18,3 @@ spec:
   remoteWrite:
     url: http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus
   selectAllByDefault: true
-

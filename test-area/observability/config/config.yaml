@@ -61,4 +61,12 @@ observability:
     remoteWriteUrl: "http://victoria-metrics-cluster-vminsert.default:8480/insert/0/prometheus"
     notifiersUrl: "http://vmalertmanager-alertmanager.victoria-metrics:9093/"
     datasourceUrl: "http://victoria-metrics-cluster-vmselect.default:8481/select/0/prometheus"
-    
+  victoriaMetricsAlertmanager:
+    defaults:
+      enabled: true
+    imageRepository: "prom/alertmanager"
+    ingress:
+      enabled: true
+      ingressClassName: "nginx"
+      clusterIusser: "prod"
+      commonName: "alertmanager.my.awesome.cluster.tld"

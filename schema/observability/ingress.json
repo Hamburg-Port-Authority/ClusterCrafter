@@ -1,7 +1,7 @@
 {
-    "$id": "https://hpa.hamburg.de/observability/victoria-metrics-agent/ingress.json",
+    "$id": "https://hpa.hamburg.de/observability/ingress.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Observability Victoria Metrics Agent Ingress Configuration Schema",
+    "title": "Observability Ingress Configuration Schema",
     "type": "object",
     "properties": {
         "enabled": {
